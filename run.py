@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect
+from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 messages = []
@@ -13,10 +13,12 @@ def get_all_messages():
     """Get all of the messages and separate them by a `br`"""
     return "<br>".join(messages)
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
     """Main page with instrutions"""
-    return "To send a message use /USERNAME/MESSAGE"
+    if request.method == "POST":
+        print(request.form)
+    return render_template("index.html")
     
     
     
