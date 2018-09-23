@@ -7,8 +7,8 @@
         <title>Riddle me This</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-        
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
         
     </head>
     <body>
@@ -35,9 +35,9 @@
           <h1 class="question text-center">Riddle me this and seek for your answer!</h1>  
           <hr />
 
-          <div class="text-center">
-          <img class="image" src="images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
-          </div>
+            <div class="text-center">
+                <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
+            </div>
 
           <hr />
 
