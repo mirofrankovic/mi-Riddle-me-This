@@ -37,7 +37,20 @@
             
         </header>
         <section>
-          <h1>Score</h1>  
+          <h1 class="text-center">Game is on</h1> 
+          
+           <h1>Welcome, {{ username }}</h1>
+        {% for message in chat_messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+        <script>
+            setTimeout(function() {
+                location.reload();
+            }, 5000);
+            
+        </script>
+          
+          
         </section>
         <footer>
             

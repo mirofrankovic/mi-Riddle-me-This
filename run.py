@@ -3,17 +3,25 @@ from datetime import datetime
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
-messages = []
+data = []
+
+def write_to_file(filename, data):
+    with open(filename, "a") as file:
+        file.writelines(data)
 
 def add_messages(username, message):
-    """Add messages to the `messages` list"""
-    now = datetime.now().strftime("%H:%M:%S")
-    messages.append("({}) {}: {}".format(now, username, message))
-    
+    """Add messages to the `messages` text file"""
+    write_to_file("data/messages.txt", "({0}) - {1}\n".format(
+            datetime.now().strftime("%H:%M:%S"),
+            username.title(),
+            message))
     
 def get_all_messages():
     """Get all of the messages and separate them by a `br`"""
-    return "<br>".join(messages)
+    messages = []
+    with open("data/messages.txt", "r") as chat_messages:
+        messages = chat_messages.readlines()
+        return messages
 
 @app.route('/', methods=["GET", "POST"])
 def index():
