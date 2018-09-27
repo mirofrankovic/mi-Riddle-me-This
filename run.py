@@ -6,12 +6,13 @@ app = Flask(__name__)
 data = []
 
 def write_to_file(filename, data):
+    """Handle the process of writing data to a file"""
     with open(filename, "a") as file:
         file.writelines(data)
 
 def add_messages(username, message):
     """Add messages to the `messages` text file"""
-    write_to_file("data/messages.txt", "({0}) - {1}\n".format(
+    write_to_file("data/messages.txt", "({0}) {1} - {2}\n".format(
             datetime.now().strftime("%H:%M:%S"),
             username.title(),
             message))
@@ -21,7 +22,7 @@ def get_all_messages():
     messages = []
     with open("data/messages.txt", "r") as chat_messages:
         messages = chat_messages.readlines()
-        return messages
+    return messages
 
 @app.route('/', methods=["GET", "POST"])
 def index():
