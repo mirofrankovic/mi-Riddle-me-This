@@ -1,6 +1,7 @@
 import os
+import json
 from datetime import datetime 
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, jsonify
 
 app = Flask(__name__)
 data = []
@@ -33,10 +34,15 @@ def index():
     
     
     
-@app.route('/<username>') 
+@app.route('/<username>', methods=["GET", "POST"]) 
 def user(username):
     """Display chat messages"""
+    data = []
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
     return "Welcome, {0} - {1}".format(username, get_all_messages())
+    
+    riddle_index = 0
     
     
 @app.route('/<username>/<message>')  

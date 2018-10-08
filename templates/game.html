@@ -17,8 +17,8 @@
         
     </head>
     <body>
-        <div class="main">
-        <header>
+    <div class="main">
+            <header>
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <!--Logo-->
@@ -36,24 +36,45 @@
                 </div>
             </nav>
             
-        </header>
-        <section>
-          <h1 class="text-center">Game is on</h1> 
-          
-           <h1 class="username">Welcome, {{ username }}</h1>
-        {% for message in chat_messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
+            </header>
+        <div class="overlay">
+            <div class="container" style="max-width:500px;">
+            <a href="/ ">   
+            <h1 class="text-center">Game is on</h1> 
+            </a>
+            <h1 class="username">Welcome, {{ username }}</h1>
+            <div class="mailing-list">
+                <!-- JSON DATA -->
+                <h3 class="riddle"> {{ company_data[riddle_index]["description"] }} </h3>
+            </div>
+            
+            
+            
+            
+            
+        </div>    
+           {% for message in chat_messages %}
+           <p>{{ message }}</p>
+           {% endfor %}
+
+        
+        
+        
+        
+        
+        
+        
+        </div>
+    </div>    
         <script>
            
             
         </script> 
           
           
-        </section>
+
         <footer>
             
         </footer>
-        </div>
     </body>
 </html>
