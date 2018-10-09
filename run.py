@@ -29,7 +29,9 @@ def get_all_messages():
 def index():
     """Main page with instrutions"""
     if request.method == "POST":
-        print(request.form)
+        with open("data/users.txt", "a") as user_list:
+            user_list.writelines(request.form["username"] + "\n")
+        return redirect(request.form["username"])
     return render_template("index.html")
     
     
