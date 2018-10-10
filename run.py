@@ -24,15 +24,32 @@ def get_all_messages():
     with open("data/messages.txt", "r") as chat_messages:
         messages = chat_messages.readlines()
     return messages
+    
+def add_users(username):
+    write_to_file("data/users.txt", "({0}) - {1}\n".format(
+        username.title()))
+        
+def get_all_users():
+    users = []
+    with open("data/users.txt", "r") as user_messsages:
+        users = user_messages.readlines()
+    return users
 
 @app.route('/', methods=["GET", "POST"])
 def index():
     """Main page with instrutions"""
     if request.method == "POST":
-        with open("data/users.txt", "a") as user_list:
-            user_list.writelines(request.form["username"] + "\n")
+        write_to_file("data/users.txt", request.form["username"] + "\n")
         return redirect(request.form["username"])
     return render_template("index.html")
+    
+@app.route('/game') 
+def game():
+    return render_template("game.html")
+    
+@app.route('/aboutus')
+def aboutus():
+    return render_template("aboutus.html")
     
     
     
