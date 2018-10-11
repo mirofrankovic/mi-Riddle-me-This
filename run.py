@@ -1,10 +1,11 @@
 import os
 import json
 from datetime import datetime 
-from flask import Flask, redirect, render_template, request, jsonify
+from flask import Flask, redirect, render_template, request, jsonify, flash
 
 app = Flask(__name__)
 data = []
+
 
 def write_to_file(filename, data):
     """Handle the process of writing data to a file"""
