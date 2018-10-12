@@ -64,6 +64,11 @@ def user(username):
     
     riddle_index = 0
     
+    messages = get_all_messages()
+    
+    return render_template("game.html",
+    username=username, chat_messages=messages, company_data=data, riddle_index=riddle_index)
+    
     
 @app.route('/<username>/<message>')  
 def send_message(username, message):
