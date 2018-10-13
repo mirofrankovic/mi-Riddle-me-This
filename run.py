@@ -1,7 +1,7 @@
 import os
 import json
 from datetime import datetime 
-from flask import Flask, redirect, render_template, request, jsonify, flash
+from flask import Flask, redirect, render_template, request, jsonify, flash, url_for 
 
 app = Flask(__name__)
 data = []
@@ -32,7 +32,7 @@ def add_users(username):
         
 def get_all_users():
     users = []
-    with open("data/users.txt", "r") as user_messsages:
+    with open("data/users.txt", "r") as user_messages:
         users = user_messages.readlines()
     return users
 
