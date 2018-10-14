@@ -10,4 +10,27 @@
         "answer": "age"
     },
     
+    {
+        "name": "riddle_2",
+        "description": "What never gets any wetter no matter how hard it rains?",
+        "answer": "water"
+  },
+  {
+        "name": "riddle_3",
+        "description": "Which word in the dictionary is spelled incorrectly?",
+        "answer": "incorrectly"
+  },
+  {
+        "name": "riddle_4",
+        "description": "What is the saddest fruit in the world?",
+        "answer": "blueberry"
+  },
+  
+  
+        "name": "riddle_11",
+        "description": "What do you get when you mix lemons with gun powder?",
+        "answer": "lemonades"
+  },
+  
+    
     ]

@@ -17,8 +17,8 @@
         
     </head>
     <body>
-    <div class="main">
-            <header>
+    
+    <header>
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <!--Logo-->
@@ -36,21 +36,61 @@
                 </div>
             </nav>
             
-            </header>
+    </header>
+    <div class="main">       
         <div class="overlay">
             <div class="container" style="max-width:500px;">
-            <a href="/ ">   
-            <h1 class="text-center">Game is on</h1> 
-            </a>
-            <h1>Welcome, {{ username }}</h1>
-            {% for message in chat_messages %}
-            <p>({{ message["timestamp"] }}) {{message["from"].title() }} - {{ message["message"] }}</p>
-            {% endfor %}
+              <a href="/ ">   
+               <h1 class="text-center">Game is on</h1> 
+              </a>
+              <h1>Welcome, {{ username }}</h1>
+                {% for message in chat_messages %}
+               <p>({{ message["timestamp"] }}) {{message["from"].title() }} - {{ message["message"] }}</p>
+                {% endfor %}
             
-            
+            </div>
             <div class="mailing-list">
                 <!-- JSON DATA -->
                 <h3 class="riddle"> {{ company_data[riddle_index]["description"] }} </h3>
+            </div>
+            <div class= "container">
+                <!-- User Box -->
+                <div class="col-md-4">
+                    <div class="panel panel-primary" style="border:0px; padding-top:15px;">
+                        <div class="panel-heading top-bar" style="background-color: #d3554d;">
+                            <h3 class="panel-title">users</h3>
+                        </div>  
+                        <!-- User List -->
+                        <div class="panel-body msg_container_base">
+                            {% for user in online_users %}
+                            <li class="bullets">{{user}}</li>
+                            {% endfor %}
+                        </div>    
+                    </div>
+                </div>
+                
+                <!-- Form -->
+                <div class="col-md-4">
+                    <form method="POST" class="form-inline">
+                        <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
+                        <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
+                        <button class="btn btn-danger">send</button>
+                    </form>    
+                </div> 
+                <!-- Wrong Answers -->
+                <div class="col-md-4">
+                    <div class="panel panel-primary" style="border:0px; padding-top:15px;">
+                        <div class="panel-heading top-bar" style="background-color: #d3554d;">
+                            <h3 class="panel-title">wrong answers</h3>
+                        </div>
+                        <!-- Wrong Answer List -->
+                        <div class="panel-body msg_container_base">
+                            {% for message in chat_messages %}
+                            <li class="bullets">{{message}}</li>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
             </div>
             
             

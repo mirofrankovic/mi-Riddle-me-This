@@ -35,6 +35,14 @@ def get_all_users():
     with open("data/users.txt", "r") as user_messages:
         users = user_messages.readlines()
     return users
+    
+@app.route('/users/online', methods=["GET"])
+def online_users():
+    online_users_file = open("data/online_users.txt")
+    online_users = [row for row in online_users_file if len(row.strip()) > 0]
+    online_users_file.close()
+
+    return jsonify(online_users)    
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -64,10 +72,37 @@ def user(username):
     
     riddle_index = 0
     
+    if request.method == "POST":
+        
+        
+         write_to_file("data/online_users.txt", username + "\n")
+         
+         
+         riddle_index = int(request.form["riddle_index"])
+         
+         user_response = request.form["message"].lower()
+         
+    if data[riddle_index]["answer"] == user_response:
+        
+        riddle_index += 1
+        
+    else: 
+        
+        add_messages(username, user_response + "\n")
+        
+    if request.method == "POST":
+          if user_response == "lemonades" and riddle_index > 10:
+            return render_template("gameover.html")
+    
     messages = get_all_messages()
     
+    online_users_file = open("data/online_users.txt")
+    online_users = [row for row in online_users_file if len(row.strip()) > 0]
+    online_users_file.close()
+
+    
     return render_template("game.html",
-    username=username, chat_messages=messages, company_data=data, riddle_index=riddle_index)
+    username=username, chat_messages=messages, company_data=data, riddle_index=riddle_index, online_users=online_users)
     
     
 @app.route('/<username>/<message>')  
