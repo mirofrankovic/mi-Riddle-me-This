@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <title>Riddle me This</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-        
-        
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        
-        
-    </head>
-    <body>
-    
-    <header>
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <!--Logo-->
-                <div class="navbar-header"> 
-                <a href="/" class="navbar-brand">
-                    Riddle me This
-                </a>
-                </div>
-                <ul class="nav navbar-nav list-inline navbar-right clearfix">
-                    <li><a href="/"><span>Home</span></a></li>
-                    <li><a href="/game"><span>Game</span></a></li>
-                    <li><a href="/aboutus"><span>About</span></a></li>
-                </ul>
-                
-                </div>
-            </nav>
-            
-    </header>
+{% extends 'base.html' %}
+{% block content %}
+
+
     <div class="main">       
         <div class="overlay">
             <div class="container" style="max-width:500px;">
@@ -54,6 +19,15 @@
                 <h3 class="riddle"> {{ company_data[riddle_index]["description"] }} </h3>
             </div>
             <div class= "container">
+                <!-- Form -->
+                <div class="text-center">
+                    <form method="POST" class="form-inline">
+                        <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
+                        <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
+                        <button class="btn btn-danger">send</button>
+                    </form>    
+                </div> 
+                
                 <!-- User Box -->
                 <div class="col-md-4">
                     <div class="panel panel-primary" style="border:0px; padding-top:15px;">
@@ -71,11 +45,7 @@
                 
                 <!-- Form -->
                 <div class="col-md-4">
-                    <form method="POST" class="form-inline">
-                        <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
-                        <input type="hidden" name="riddle_index" id="riddle_index" value={{riddle_index}}>
-                        <button class="btn btn-danger">send</button>
-                    </form>    
+                     
                 </div> 
                 <!-- Wrong Answers -->
                 <div class="col-md-4">
@@ -117,9 +87,4 @@
         </script> 
           
           
-
-        <footer>
-            
-        </footer>
-    </body>
-</html>
+{% endblock %}
