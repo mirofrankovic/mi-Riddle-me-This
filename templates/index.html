@@ -1,24 +1,22 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
-    <div class="main>" 
-           <div class="container">
-            <h1 class="question text-center">Riddle me this and seek for your answer!</h1>  
-            <hr />
-           </div>
-            <div class="text-center">
-                <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
-            </div>
+<div class="main>" <div class="container">
+    <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
+    <hr />
+</div>
+<div class="text-center">
+    <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
+</div>
 
-          <hr />
+<hr />
 
-          <div class="text-center">
-          <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" autofoxus>
-            <button class="btn btn-danger">Start</button>
-          </form>
-          </div>
-    </div>
+<div class="text-center">
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" autofoxus>
+        <button class="btn btn-danger">Start</button>
+    </form>
+</div>
+</div>
 
 {% endblock %}
