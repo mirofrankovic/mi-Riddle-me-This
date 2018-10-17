@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Flask, redirect, render_template, request, jsonify, flash, url_for 
 
 app = Flask(__name__)
+app.secret_key = 'some_secret'
 data = []
 
 
@@ -49,6 +50,7 @@ def index():
     """Main page with instrutions"""
     if request.method == "POST":
         write_to_file("data/users.txt", request.form["username"] + "\n")
+        write_to_file("data/online_users.txt", request.form["username"] + "\n")
         return redirect(request.form["username"])
     return render_template("index.html")
     
