@@ -12,3 +12,4 @@
 (18:54:47) Templates - {{ url_for('game') }}
 (18:54:52) Templates - {{ url_for('index') }}
 (18:56:10) Templates - index.html
+(21:53:01) Templates - game.html

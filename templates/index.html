@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+
 
 <div class="main>" <div class="container">
     <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
@@ -11,12 +11,10 @@
 <hr />
 
 <div class="text-center">
-    <form method="POST">
+    <form method="POST" action="">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" autofoxus>
-        <button class="btn btn-danger">Start</button>
+        <button type="submit" class="btn btn-danger">Start</button>
     </form>
 </div>
 </div>
-
-{% endblock %}
