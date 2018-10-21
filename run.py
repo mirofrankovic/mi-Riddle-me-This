@@ -11,7 +11,8 @@ def add_messages(username, message):
     
     
 def get_all_messages():
-    return "<br>".join(messages)
+    """Get all of the messages and separete them by a `br`"""
+    return messages
 
 
 
