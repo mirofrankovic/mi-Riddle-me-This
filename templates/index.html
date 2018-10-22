@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 
 <div class="main"> <div class="container">
     <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
@@ -11,7 +15,7 @@
 
 <div class="text-center">
     <!-- action attribute tells the browser where should it submit the form -->
-    <form method="POST" action="">
+    <form method="POST" action=".">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" autofoxus>
         <button type="submit" class="btn btn-danger">Start</button>
@@ -20,3 +24,4 @@
 </div>
 
 
+{% endblock %}
