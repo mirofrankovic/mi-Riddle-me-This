@@ -8,7 +8,8 @@ messages = []
 
 def add_messages(username, message):
     now = datetime.now().strftime("%H:%M:%S")
-    messages.append("({}) {}: {}".format(now, username, message))
+    message_dict = {"timestamp": now, "from": username, "message": message}
+    messages.append(message_dict)
     
     
 def get_all_messages():
@@ -28,7 +29,10 @@ def index():
     
 @app.route('/<username>')
 def user(username):
-    return "Welcome, {0} - {1}".format(username, get_all_messages())
+    messages = get_all_messages()
+    
+    return render_template("game.html",
+                            username=username, chat_messages=messages) 
     
     
 @app.route('/<username>/<message>')  

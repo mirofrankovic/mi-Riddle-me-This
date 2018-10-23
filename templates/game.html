@@ -1,8 +1,19 @@
-{% extends 'base.html' %}
+<div class="main"> <div class="container">
+    <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
+    <hr />
+</div>
+<div class="text-center">
+    <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
+</div>
 
-{% block content %}
+<hr />
 
-<h1>Hallo there!</h1>
+<div class="text-center">
+    <!-- action attribute tells the browser where should it submit the form -->
+    <h1>Welcome, {{ username }}</h1>
+    {{ chat_messages }}
+</div>
+</div>
 
 
-{% endblock %}
+
