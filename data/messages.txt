@@ -13,3 +13,5 @@
 (18:54:52) Templates - {{ url_for('index') }}
 (18:56:10) Templates - index.html
 (21:53:01) Templates - game.html
+(Mirofrankovic) - hi
+(Jack) - how are you
