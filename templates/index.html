@@ -1,7 +1,23 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>Riddle me This</title>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+                  content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible"
+                  content="ie=edge">
+        <title>{{ page_title }}</title>   
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+        <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+        
     </head>
+    
+    
+    
+    
 <body>
 
 
@@ -11,14 +27,14 @@
     <hr />
 </div>
 <div class="text-center">
-    <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
+    <img class="image" src="static/images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
 </div>
 
 <hr />
 
 <div class="text-center">
     <!-- action attribute tells the browser where should it submit the form -->
-    <form method="POST" action="">
+    <form method="POST" action=".">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" autofoxus>
         <button type="submit" class="btn btn-danger">Start</button>
@@ -26,6 +42,9 @@
 </div>
 </div>
 
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>
 </html>
 

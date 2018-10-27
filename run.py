@@ -31,6 +31,9 @@ def get_all_messages():
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+    """Main page with instruction"""
+    
+    # Handle POST request
     if request.method == "POST":
         
         write_to_file("data/users.txt", request.form["username"] + "\n")

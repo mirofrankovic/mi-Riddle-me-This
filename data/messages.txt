@@ -15,3 +15,7 @@
 (21:53:01) Templates - game.html
 (Mirofrankovic) - hi
 (Jack) - how are you
+(Templates) - table.html
+(Templates) - game.html
+(Templates) - table.html
+(Templates) - index.html
