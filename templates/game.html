@@ -22,21 +22,100 @@
 
 
 <div class="main"> 
-     <div class="container">
-     <div class="text-center">
-     <img class="image" src="static/images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
-     </div>
-     </div>
+<div class="overlay">
+                <div class="container" style="max-width:380px;">
+                    <a href="/ ">
+                        <h1 class="title_riddle">Seek for your answer</h1>
+                    </a>
+                <div class="text-center">
+                  <img class="image" src="static/images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
+                </div>
+                </div>
 
-<hr />
-
-    <div class="text-center">
-    <!-- action attribute tells the browser where should it submit the form -->
-    <h1>Welcome, {{ username }}</h1>
-    {{ chat_messages }}
-    </div>
+            <hr />
+                <div class="container">
+                <div class="text-center">
+                <!-- action attribute tells the browser where should it submit the form -->
+                <h1>Welcome, {{ username }}</h1>
+                {{ chat_messages }}
+                </div>
+                </div>
+                <div class="container">
+                <!-- User box -->
+                <div class="col-md-4">
+                    <div class="panel panel-primary" style="border:0px; padding-top:0px;">
+                        <div class="panel-heading top-bar" style="background-color: #d3554d;">
+                            <h3 class="panel-title">users</h3>
+                        </div>
+                        <!-- User list -->
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    
+                </div>
+                
+                <!-- Form -->
+                <div class="col-md-4">
+                    <form method="POST" class="form-inline">
+                        <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
+                        <input type="hidden" name="riddle_index" id="riddle_index" value={{ riddle_index }}>
+                        <button class="btn btn-danger">send</button>
+                    </form>
+                </div>
+                
+                <!-- Incorrect answers box -->
+                <div class="col-md-4">
+                    <div class="panel panel-primary" style="border:0px; padding-top:0px;">
+                        <div class="panel-heading top-bar" style="background-color: #d3554d;">
+                            <h3 class="panel-title">incorrect answers</h3>
+                        </div>
+                        
+                <!-- Incorrect answers list -->
+                
+                    </div>
+                    
+                    
+                    
+                </div>
+                    
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                   
+                    
+                    
+                </div>
+                
+                
+</div>                
 </div>
-   <!-- is setTimeout or setInterval function -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- is setTimeout or setInterval function -->
 <script type="text/javascript">
     
     setTimeout(function() {
@@ -50,3 +129,10 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
