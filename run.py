@@ -1,7 +1,8 @@
 import os
+import json
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request
+from flask import Flask, redirect, render_template, request, jsonify
 
 
 app = Flask(__name__)
@@ -38,6 +39,14 @@ def get_all_users():
     with open("data/users.txt", "r") as user_messages:
         users = user_messages.readlines()
     return users
+    
+@app.route('/users/online', methods=["GET"])
+def online_users():
+    online_users_file = open("data/online_users.txt")
+    online_users = [row for row in online_users_file if len(row.strip()) > 0]
+    online_users_file.close()
+    
+    return jsonify(online_users)
         
 
 
@@ -54,12 +63,19 @@ def index():
     return render_template("index.html")
     
     
-@app.route('/<username>')
+@app.route('/<username>', methods=["GET", "POST"])
 def user(username):
+    """Display chat messages"""
+    data = []
+    with open("data/company.json", "r") as json_data:
+        data = json.load(json_data)
+        
+        
+    
     messages = get_all_messages()
     
     return render_template("game.html",
-                            username=username, chat_messages=messages) 
+                            username=username, chat_messages=messages, company_data=data) 
     
     
 @app.route('/<username>/<message>')  
