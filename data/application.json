@@ -1,0 +1,25 @@
+{
+    "applicationTitle": "Riddle Me This",
+    "questionary": [
+    {
+        "question": "How old is Guido",
+        "attempts": 4,
+        "answers": ["3", "44", "30", "41", "50", "28"],
+        "correctAnswerIndex": 3
+        "correctAnswerValue": "41"
+    },
+    {
+        "question": "How old is Miro",
+        "attempts": 5,
+        "answers": ["3", "44", "30", "41", "50", "28"],
+        "correctAnswerIndex": 3
+        "correctAnswerValue": "41"
+    },
+    {
+        "question": "Guido original contry is?",
+        "attempts": 5,
+        "answers": ["France", "Germany", "Cuba", "Canada", "Brazil", "USA"],
+        "correctAnswerIndex": 2
+        "correctAnswerValue": "Cuba"
+    }]
+}

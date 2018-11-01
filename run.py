@@ -15,7 +15,6 @@ def write_to_file(filename, data):
     with open(filename, "a") as file:
         file.writelines(data)
     
-
 def add_messages(username, message):
     """Now we added messages to the `messages` stored in text file"""
     write_to_file("data/messages.txt", "({0}) - {1}\n".format(
@@ -31,8 +30,7 @@ def get_all_messages():
 
 def add_users(username):
     """Now we added users to the `users` stored in text file"""
-    write_to_file("data/users.txt", "({0}) - {1}\n".format(
-              username.title()))
+    write_to_file("data/users.txt", "{}\n".format(username.title()))
         
 def get_all_users():
     users= []
@@ -48,8 +46,6 @@ def online_users():
     
     return jsonify(online_users)
         
-
-
 @app.route('/', methods=["GET", "POST"])
 def index():
     """Main page with instruction"""
@@ -70,12 +66,11 @@ def user(username):
     with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
         
-        
-    
     messages = get_all_messages()
     
     return render_template("game.html",
-                            username=username, chat_messages=messages, company_data=data) 
+                            username=username, chat_messages=messages,
+                            company_data=data) 
     
     
 @app.route('/<username>/<message>')  
