@@ -6,8 +6,18 @@ from flask import Flask, redirect, render_template, request, jsonify
 
 
 app = Flask(__name__)
-messages = []
 data = []
+
+def question_counter():
+    """Create an array of question and answer"""
+    answers = []
+    with open("data/application.json", "r") as file:
+        lines = file.read().splitlines()
+    for line in lines:
+        answers.append(line)
+    return answers    
+        
+    
 
 
 def write_to_file(filename, data):
@@ -63,14 +73,14 @@ def index():
 def user(username):
     """Display chat messages"""
     data = []
-    with open("data/company.json", "r") as json_data:
+    with open("data/application.json", "r") as json_data:
         data = json.load(json_data)
         
     messages = get_all_messages()
     
     return render_template("game.html",
                             username=username, chat_messages=messages,
-                            company_data=data) 
+                            application_data=data) 
     
     
 @app.route('/<username>/<message>')  
