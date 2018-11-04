@@ -6,16 +6,19 @@ from flask import Flask, redirect, render_template, request, jsonify
 
 
 app = Flask(__name__)
+messages = []
+answers = []
 data = []
 
-def question_counter():
+def get_question_counter(questionary):
     """Create an array of question and answer"""
-    answers = []
-    with open("data/application.json", "r") as file:
-        lines = file.read().splitlines()
-    for line in lines:
-        answers.append(line)
-    return answers    
+    with open("data/application.json") as json_application:
+        application = json.loads(json_application.read())
+        return application[questionary] if questionary < 10 else None  #Return None to avoid questionary error on the last question
+        
+"""Initial state for the game with some default values"""
+
+        
         
     
 
