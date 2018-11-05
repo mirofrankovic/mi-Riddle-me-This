@@ -16,7 +16,15 @@ def get_question_counter(questionary):
         application = json.loads(json_application.read())
         return application[questionary] if questionary < 10 else None  #Return None to avoid questionary error on the last question
         
-"""Initial state for the game with some default values"""
+"""Initial state for the game with all variables with some initial default values get assignet"""
+def init_game(username):
+    score = 0
+    attempts = 5
+    question = get_question_counter(0)
+    context = {
+        'question_counter': 0,
+    }
+
 
         
         
