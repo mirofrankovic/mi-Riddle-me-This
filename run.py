@@ -6,9 +6,7 @@ from flask import Flask, redirect, render_template, request, jsonify
 
 
 app = Flask(__name__)
-messages = []
-answers = []
-data = []
+
 
 def get_question_counter(questionary):
     """Create an array of question and answer"""
@@ -80,10 +78,13 @@ def index():
     return render_template("index.html")
     
     
-@app.route('/<username>', methods=["GET", "POST"])
+@app.route('/game/<username>', methods=["GET", "POST"])
 def user(username):
     """Display chat messages"""
-    data = []
+    
+    if request.method == "POST":
+        form = request.form
+    
     with open("data/application.json", "r") as json_data:
         data = json.load(json_data)
         
@@ -91,7 +92,7 @@ def user(username):
     
     return render_template("game.html",
                             username=username, chat_messages=messages,
-                            application_data=data) 
+                                    ) 
     
     
 @app.route('/<username>/<message>')  
