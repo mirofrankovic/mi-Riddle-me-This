@@ -20,3 +20,4 @@
 (Templates) - table.html
 (Templates) - index.html
 (Mark) - how are you
+(Templates) - game.html

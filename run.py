@@ -21,12 +21,15 @@ def init_game(username):
     question = get_question_counter(0)
     context = {
         'question_counter': 0,
+        'question': question['question'],
+        'answers': question['answers'],
+        'attemptsCounter': attempts,
+        'current_score': score,
+        'username': username,
+        'correctAnswerIndex': question['correctAnswerIndex'],
+        'correctAnswerValue': question['correctAnswerValue']
     }
-
-
-        
-        
-    
+    return context
 
 
 def write_to_file(filename, data):
@@ -75,15 +78,23 @@ def index():
         write_to_file("data/users.txt", request.form["username"] + "\n")
         
         return redirect(request.form["username"])
-    return render_template("index.html")
+    return render_template("index.html", username=user)
     
     
+  #Route to show the game
 @app.route('/game/<username>', methods=["GET", "POST"])
-def user(username):
+def user(username,):
     """Display chat messages"""
     
     if request.method == "POST":
         form = request.form
+    
+    if form.get('first-question') == 'true':
+        context = init_game(username)
+        return render_template('game.html', context=context)
+        
+        
+        
     
     with open("data/application.json", "r") as json_data:
         data = json.load(json_data)
@@ -92,7 +103,7 @@ def user(username):
     
     return render_template("game.html",
                             username=username, chat_messages=messages,
-                                    ) 
+                        ) 
     
     
 @app.route('/<username>/<message>')  

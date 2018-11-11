@@ -6,12 +6,20 @@
                   content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible"
                   content="ie=edge">
-        <title>{{ page_title }}</title>   
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+        <title>{{ page_title }}</title> 
+        
+        <!-- Bootstrap core CSS --> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css" />
+        
+        
+        <!-- Custom fonts for my templates -->
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-        <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        
+        <!-- Custom style for my templates -->
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
+	    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+	    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
         
     </head>
     
@@ -35,9 +43,11 @@
 
 
 
+<!-- Bootstrap core for Java Script -->
 
-<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
 </body>
 </html>
 

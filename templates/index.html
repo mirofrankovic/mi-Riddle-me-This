@@ -8,14 +8,14 @@
     <hr />
 </div>
 <div class="text-center">
-    <img class="image" src="static/images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
+    <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
 </div>
 
 <hr />
 
 <div class="text-center">
     <!-- action attribute tells the browser where should it submit the form -->
-    <form method="POST" action=".">
+    <form method="POST" action="/game/{{ username }}">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" autofoxus>
         <button type="submit" class="btn btn-danger">Start</button>

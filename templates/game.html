@@ -11,7 +11,7 @@
                         <h1 class="title_riddle">Seek for your answer</h1>
                     </a>
                 <div class="text-center">
-                  <img class="image" src="static/images/gollum.jpg" alt="Generic placeholder image" width="200" height="200">
+                  <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }} alt="Generic placeholder image" width="200" height="200">
                 </div>
                 </div>
 
@@ -45,7 +45,9 @@
                 <div class="col-md-4">
                     <form method="POST" class="form-inline">
                         <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
-                        <input type="hidden" name="riddle_index" id="riddle_index" value={{ riddle_index }}>
+                        <input type="hidden" name="question_counter" id="question_counter" value={{ context.question_counter }}>
+                        <input type="hidden" name="current_score" id="current_score" value={{ context.current_score }}>
+                        <input type="hidden" name="attemptsCounter" id="attemptsCounter" value={{ context.attemptsCounter }}>
                         <button class="btn btn-danger">send</button>
                     </form>
                 </div>
