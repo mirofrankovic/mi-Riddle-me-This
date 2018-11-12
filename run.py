@@ -92,7 +92,17 @@ def user(username,):
     if form.get('first-question') == 'true':
         context = init_game(username)
         return render_template('game.html', context=context)
+    else:
+        #Get attempts numbers from the application file
+        attempts = int(request.form.get('attempts'))
+        question_counter = int(request.form.get('question_counter'))
+        score = int(request.form.get('current_score'))
+        question = get_question_counter(question_counter)
         
+        #Check if the answer is correct
+        accepted_answers = request.form.get('accepted_answers').strip().lower()
+        actual_answers = question['answers'].strip().lower()
+        correct = accepted_answers == actual_answers
         
         
     
