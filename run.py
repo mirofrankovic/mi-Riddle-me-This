@@ -36,19 +36,33 @@ def write_to_file(filename, data):
     """Handle the process of writing data to a file"""
     with open(filename, "a") as file:
         file.writelines(data)
+        
+    
     
 def add_messages(username, message):
     """Now we added messages to the `messages` stored in text file"""
     write_to_file("data/messages.txt", "({0}) - {1}\n".format(
              username.title(),
              message))
-    
+             
+             
+#Attempts should we count as messages and chat_messages as incorect answers    
 def get_all_messages():
     """Get all of the messages and separete them by a `br`"""
     messages = []
     with open("data/messages.txt", "r") as chat_messages:
         messages = [row for row in chat_messages if len(row.strip()) > 0]
     return messages
+    
+def num_of_messages():
+    """The number or messages/attempst made by the user on the current question"""
+    messages = get_all_messages
+    return len(messages);
+    
+def messages_rem():
+    """Return the number of messages/attempts remaining"""
+    rem_messages = 5 - num_of_messages()
+    return rem_messages;
 
 def add_users(username):
     """Now we added users to the `users` stored in text file"""
@@ -103,6 +117,16 @@ def user(username,):
         accepted_answers = request.form.get('accepted_answers').strip().lower()
         actual_answers = question['answers'].strip().lower()
         correct = accepted_answers == actual_answers
+        
+        #Scoring
+        while question_counter < 10:
+            if correct:
+                question_counter += 1
+                score += 1
+                attempts = 5
+                next_question = get_question_counter(question_counter)
+        
+        
         
         
     
