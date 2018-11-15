@@ -125,6 +125,15 @@ def user(username,):
                 score += 1
                 attempts = 5
                 next_question = get_question_counter(question_counter)
+            else:
+                if attempts >= 5:
+                    question_counter += 1
+                    score += 1
+                    
+                    next_question = get_question_counter(question_counter)
+                    
+                    
+                    
         
         
         
