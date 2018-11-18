@@ -15,6 +15,7 @@ def get_question_counter(questionary):
         return application[questionary] if questionary < 10 else None  #Return None to avoid questionary error on the last question
         
 """Initial state for the game with all variables with some initial default values get assignet"""
+#riddle == question
 def init_game(username):
     score = 0
     attempts = 5
@@ -46,7 +47,7 @@ def add_messages(username, message):
              message))
              
              
-#Attempts should we count as messages and chat_messages as incorect answers    
+#Attempts should we understand as messages and chat_messages as incorect answers    
 def get_all_messages():
     """Get all of the messages and separete them by a `br`"""
     messages = []
@@ -98,16 +99,19 @@ def index():
   #Route to show the game
 @app.route('/game/<username>', methods=["GET", "POST"])
 def user(username,):
-    """Display chat messages"""
+    """Question state - Display chat messages"""
     
     if request.method == "POST":
         form = request.form
-    
+        
+    #If user answer correcly increment question_counter +1
     if form.get('first-question') == 'true':
         context = init_game(username)
         return render_template('game.html', context=context)
+        
     else:
-        #Get attempts numbers from the application file
+        #Get attempts numbers from the application.json file
+        #int() argument must be a string or a number(5 or attemptsCounter)?
         attempts = int(request.form.get('attempts'))
         question_counter = int(request.form.get('question_counter'))
         score = int(request.form.get('current_score'))
@@ -118,7 +122,7 @@ def user(username,):
         actual_answers = question['answers'].strip().lower()
         correct = accepted_answers == actual_answers
         
-        #Scoring
+        #Scoring correctly question_counter incremented +1
         while question_counter < 10:
             if correct:
                 question_counter += 1
@@ -126,6 +130,9 @@ def user(username,):
                 attempts = 5
                 next_question = get_question_counter(question_counter)
             else:
+                #If answers are incorrect and the number of attempts user have more then 5, take the user to the next question
+                #`attemptsCounter` incremented by 1
+                #questionary[question_counter].attempts
                 if attempts >= 5:
                     question_counter += 1
                     score += 1
