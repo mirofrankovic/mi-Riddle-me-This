@@ -21,5 +21,12 @@
         "answers": ["France", "Germany", "Cuba", "Canada", "Brazil", "USA"],
         "correctAnswerIndex": 2
         "correctAnswerValue": "Cuba"
+    },
+    {
+        "question": "Where was Miro born?",
+        "attempts": 5,
+        "answers": ["Slovakia", "Germany", "Cuba", "Canada", "Brazil", "USA"],
+        "correctAnswerIndex": 0
+        "correctAnswerValue": "Slovakia"
     }]
 }

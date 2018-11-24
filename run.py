@@ -2,6 +2,7 @@ import os
 import json
 from datetime import datetime
 
+
 from flask import Flask, redirect, render_template, request, jsonify
 
 
@@ -47,44 +48,39 @@ def add_messages(username, message):
              message))
              
              
-#Attempts should we understand as messages and chat_messages as incorect answers    
-def get_all_messages():
-    """Get all of the messages and separete them by a `br`"""
-    messages = []
-    with open("data/messages.txt", "r") as chat_messages:
-        messages = [row for row in chat_messages if len(row.strip()) > 0]
-    return messages
+# Function to get all attempts should we understand as messages and chat_messages as incorect answers    
+def get_all_attempts():
+    """Get all of the attempts/ messages and separete them by a `br`"""
+    attempts = []
+    with open("data/messages.txt", "r") as incorect_answers:
+        attempts = [row for row in incorect_answers if len(row.strip()) > 0]
+    return attempts
     
-def num_of_messages():
+def num_of_attempts():
     """The number or messages/attempst made by the user on the current question"""
-    messages = get_all_messages
-    return len(messages);
+    attempts = get_all_attempts
+    return len(attempts);
     
-def messages_rem():
+def attempts_rem():
     """Return the number of messages/attempts remaining"""
-    rem_messages = 5 - num_of_messages()
-    return rem_messages;
+    rem_attempts = 5 - num_of_attempts()
+    return rem_attempts;
 
 def add_users(username):
     """Now we added users to the `users` stored in text file"""
     write_to_file("data/users.txt", "{}\n".format(username.title()))
-        
+
+#Function to get current users        
 def get_all_users():
     users= []
     with open("data/users.txt", "r") as user_messages:
         users = user_messages.readlines()
     return users
     
-@app.route('/users/online', methods=["GET"])
-def online_users():
-    online_users_file = open("data/online_users.txt")
-    online_users = [row for row in online_users_file if len(row.strip()) > 0]
-    online_users_file.close()
-    
-    return jsonify(online_users)
+
         
 @app.route('/', methods=["GET", "POST"])
-def index():
+def home():
     """Main page with instruction"""
     
     # Handle POST request
@@ -98,7 +94,7 @@ def index():
     
   #Route to show the game
 @app.route('/game/<username>', methods=["GET", "POST"])
-def user(username,):
+def user(username):
     """Question state - Display chat messages"""
     
     if request.method == "POST":
@@ -107,7 +103,7 @@ def user(username,):
     #If user answer correcly increment question_counter +1
     if form.get('first-question') == 'true':
         context = init_game(username)
-        return render_template('game.html', context=context)
+        return render_template('game.html', context=context, username=username)
         
     else:
         #Get attempts numbers from the application.json file
@@ -139,21 +135,14 @@ def user(username,):
                     
                     next_question = get_question_counter(question_counter)
                     
-                    
-                    
-        
-        
-        
-        
-    
     with open("data/application.json", "r") as json_data:
         data = json.load(json_data)
         
-    messages = get_all_messages()
+    attempts = get_all_attempts()
     
-    return render_template("game.html",
-                            username=username, chat_messages=messages,
-                        ) 
+    return render_template(
+        "game.html", username=username, attempts=attempts,
+    ) 
     
     
 @app.route('/<username>/<message>')  
