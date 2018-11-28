@@ -9,18 +9,20 @@ from flask import Flask, redirect, render_template, request, jsonify
 app = Flask(__name__)
 
 
-def get_question_counter(questionary):
+def get_questionary(question_counter):
     """Create an array of question and answer"""
+    """WE should use get as(read function) for get_questionary and (question_counter) use as a variable"""
     with open("data/application.json") as json_application:
         application = json.loads(json_application.read())
-        return application[questionary] if questionary < 10 else None  #Return None to avoid questionary error on the last question
+    #return   
+        return application[question_counter] if question_counter < 10 else None  #Return None to avoid questionary error on the last question
         
 """Initial state for the game with all variables with some initial default values get assignet"""
 #riddle == question
 def init_game(username):
     score = 0
     attempts = 5
-    question = get_question_counter(0)
+    question = get_questionary(0)
     context = {
         'question_counter': 0,
         'question': question['question'],
@@ -83,13 +85,22 @@ def get_all_users():
 def home():
     """Main page with instruction"""
     
-    # Handle POST request
+    # Handle POST request and send data to the server
     if request.method == "POST":
         
         write_to_file("data/users.txt", request.form["username"] + "\n")
         
         return redirect(request.form["username"])
     return render_template("index.html", username=user)
+    
+@app.route('/game/', methods=["GET", "POST"])
+def game():
+    """To provide a link to the game"""
+    if request.method == "POST":
+        form = request.form
+        user = form['username']
+        return render_template("game.html", username=user)
+        
     
     
   #Route to show the game
@@ -109,9 +120,9 @@ def user(username):
         #Get attempts numbers from the application.json file
         #int() argument must be a string or a number(5 or attemptsCounter)?
         attempts = int(request.form.get('attempts'))
-        question_counter = int(request.form.get('question_counter'))
+        question_counter = int(request.form.get("question_counter"))
         score = int(request.form.get('current_score'))
-        question = get_question_counter(question_counter)
+        question = get_questionary(question_counter)
         
         #Check if the answer is correct
         accepted_answers = request.form.get('accepted_answers').strip().lower()
@@ -124,7 +135,7 @@ def user(username):
                 question_counter += 1
                 score += 1
                 attempts = 5
-                next_question = get_question_counter(question_counter)
+                next_question = get_questionary(question_counter)
             else:
                 #If answers are incorrect and the number of attempts user have more then 5, take the user to the next question
                 #`attemptsCounter` incremented by 1
@@ -133,7 +144,7 @@ def user(username):
                     question_counter += 1
                     score += 1
                     
-                    next_question = get_question_counter(question_counter)
+                    next_question = get_questionary(question_counter)
                     
     with open("data/application.json", "r") as json_data:
         data = json.load(json_data)

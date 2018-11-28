@@ -43,7 +43,7 @@
                 
                 <!-- Form -->
                 <div class="col-md-4">
-                    <form method="POST" class="form-inline">
+                    <form method="POST" action="/game/{{ username }}" class="form-inline">
                         <input type="text" class="form-control" placeholder="answer" name="message" id="message" autofocus>
                         <input type="hidden" name="question_counter" id="question_counter" value={{ context.question_counter }}>
                         <input type="hidden" name="current_score" id="current_score" value={{ context.current_score }}>
