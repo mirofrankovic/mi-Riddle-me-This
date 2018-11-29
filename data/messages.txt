@@ -21,3 +21,11 @@
 (Templates) - index.html
 (Mark) - how are you
 (Templates) - game.html
+(Templates) - gotogame.html
+(Templates) - gotogame.html
+(Templates) - gotogame.html
+(Templates) - gotogame.html
+(Templates) - gotogame.html
+(Templates) - gotogame.html
+(Templates) - base.html
+(Templates) - index.html

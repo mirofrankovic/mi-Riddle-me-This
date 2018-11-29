@@ -17,7 +17,7 @@ def get_questionary(question_counter):
     #return   
         return application[question_counter] if question_counter < 10 else None  #Return None to avoid questionary error on the last question
         
-"""Initial state for the game with all variables with some initial default values get assignet"""
+"""Initial state for the game with all variables for our templates with some initial default values get assignet"""
 #riddle == question
 def init_game(username):
     score = 0
@@ -93,13 +93,13 @@ def home():
         return redirect(request.form["username"])
     return render_template("index.html", username=user)
     
-@app.route('/game/', methods=["GET", "POST"])
-def game():
+@app.route('/gotogame/', methods=["GET", "POST"])
+def gotogame():
     """To provide a link to the game"""
     if request.method == "POST":
         form = request.form
         user = form['username']
-        return render_template("game.html", username=user)
+        return render_template("gotogame.html", username=user)
         
     
     
