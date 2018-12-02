@@ -3,7 +3,7 @@ import json
 from datetime import datetime
 
 
-from flask import Flask, redirect, render_template, request, jsonify, url_for
+from flask import Flask, redirect, render_template, request, jsonify
 
 
 app = Flask(__name__)

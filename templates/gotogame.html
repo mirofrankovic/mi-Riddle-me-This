@@ -10,7 +10,7 @@
             <div class="subheading mb-4">Do yuo want to know more about my game????</div>
             
             <p class="lead mb-5">Hi {{ username }}!! Are ready to take the quest?</p>
-            <h3>When you are ready to S T A R T, click on the button bellow!</h3>
+            <h3>When you are ready to <strong>S T A R T</strong>, click on the button bellow!</h3>
             <form method="POST" action="/game/{{ username }}">
                 <input type="hidden" value="true" name="mygame" autofoxus>
                 <button type="submit" class="main-button btn btn-danger btn-block">Start when you ready</button>
