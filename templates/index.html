@@ -2,25 +2,27 @@
 
 {% block core %}
 
+<div class="main"> 
+    <div class="container">
+        <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
+        <hr />
+    </div>
+    <div class="text-center">
+        <img class="image"
+            src="{{ url_for('static', filename='images/gollum.jpg') }}"
+            alt="Generic placeholder image" width="200" height="200">
+    </div>
 
-<div class="main"> <div class="container">
-    <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
     <hr />
-</div>
-<div class="text-center">
-    <img class="image" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image" width="200" height="200">
-</div>
 
-<hr />
-
-<div class="text-center">
-    <!-- action attribute tells the browser where should it submit the form -->
-    <form method="POST" action="/gotogame/">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" autofoxus>
-        <button type="submit" class="btn btn-danger">Start</button>
-    </form>
-</div>
+    <div class="text-center">
+        <!-- action attribute tells the browser where should it submit the form -->
+        <form method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="player_name" autofoxus>
+            <button type="submit" class="btn btn-danger">Start</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}

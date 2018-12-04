@@ -2,163 +2,79 @@ import os
 import json
 from datetime import datetime
 
-
 from flask import Flask, redirect, render_template, request, jsonify, url_for
 
-
 app = Flask(__name__)
+application_data = []
+questionary = None
+with open('data/application.json') as json_file:
+    application_data = json.load(json_file)
+    questionary = application_data['questionary']
+    json_file.close()
 
-
-def get_questionary(question_counter):
-    """Create an array of question and answer"""
-    """WE should use get as(read function) for get_questionary and (question_counter) use as a variable"""
-    with open("data/application.json") as json_application:
-        application = json.loads(json_application.read())
-    #return   
-        return application[question_counter] if question_counter < 10 else None  #Return None to avoid questionary error on the last question
-        
-"""Initial state for the game with all variables for our templates with some initial default values get assignet"""
-#riddle == question
-def init_game(username):
-    score = 0
-    attempts = 5
-    question = get_questionary(0)
-    context = {
-        'question_counter': 0,
-        'question': question['question'],
-        'answers': question['answers'],
-        'attemptsCounter': attempts,
-        'current_score': score,
-        'username': username,
-        'correctAnswerIndex': question['correctAnswerIndex'],
-        'correctAnswerValue': question['correctAnswerValue']
-    }
-    return context
-
-
-def write_to_file(filename, data):
-    """Handle the process of writing data to a file"""
-    with open(filename, "a") as file:
-        file.writelines(data)
-        
-    
-    
-def add_messages(username, message):
-    """Now we added messages to the `messages` stored in text file"""
-    write_to_file("data/messages.txt", "({0}) - {1}\n".format(
-             username.title(),
-             message))
-             
-             
-# Function to get all attempts should we understand as messages and chat_messages as incorect answers    
-def get_all_attempts():
-    """Get all of the attempts/ messages and separete them by a `br`"""
-    attempts = []
-    with open("data/messages.txt", "r") as incorect_answers:
-        attempts = [row for row in incorect_answers if len(row.strip()) > 0]
-    return attempts
-    
-def num_of_attempts():
-    """The number or messages/attempst made by the user on the current question"""
-    attempts = get_all_attempts
-    return len(attempts);
-    
-def attempts_rem():
-    """Return the number of messages/attempts remaining"""
-    rem_attempts = 5 - num_of_attempts()
-    return rem_attempts;
-
-def add_users(username):
-    """Now we added users to the `users` stored in text file"""
-    write_to_file("data/users.txt", "{}\n".format(username.title()))
-
-#Function to get current users        
-def get_all_users():
-    users= []
-    with open("data/users.txt", "r") as user_messages:
-        users = user_messages.readlines()
-    return users
-    
-
-        
 @app.route('/', methods=["GET", "POST"])
-def home():
-    """Main page with instruction"""
-    
-    # Handle POST request and send data to the server
+def index():
     if request.method == "POST":
-        
-        write_to_file("data/users.txt", request.form["username"] + "\n")
-        
-        return redirect(request.form["username"])
-    return render_template("index.html", username=user)
+        player_name = request.form['player_name']
+        return redirect(player_name)
+    return render_template("index.html")
     
-@app.route('/gotogame/', methods=["GET", "POST"])
-def gotogame():
-    """To provide a link to the game"""
-    if request.method == "POST":
-        form = request.form
-        user = form['username']
-        return render_template("gotogame.html", username=user)
-        
+@app.route('/<player_name>', methods=["GET", "POST"])
+def game(player_name):
+    # (0) Initial state (Variables are initialized) ----> (1)
+    # (1) Question state (Render the question with the list of answers)
+    #     --- If user answer the question correctly ---> (2)
+    #     --- If the answer is incorrectly ---> (1.2) 
+    # (1.2) `attemptsCounter` incremented by 1
+    #     --- If `attemptsCounter` == questionary[question_counter].attempts ---> (2)
+    #     --- If `attemptsCounter` < questionary[question_counter].attempts ---> (1)
+    # (2) Increment `question_counter` plus 1, reset `attemptsCounter` ---> (3)
+    # (3) If question_counter is equal to total questions -----> (4) if not ---> (1)
+    # (4) Shows result of the quiz
     
-    
-  #Route to show the game
-@app.route('/game/<username>', methods=["GET", "POST"])
-def user(username):
     """Question state - Display chat messages"""
-    
     if request.method == "POST":
         form = request.form
-        
-    #If user answer correcly increment question_counter +1
-    if form.get('first-question') == 'true':
-        context = init_game(username)
-        return render_template('game.html', context=context, username=username)
-        
+        question_counter = int(form['question_counter'])
+        attempts_counter = int(form['attempts_counter'])
+        score = int(form['score'])
+        answer = form['answer']
     else:
-        #Get attempts numbers from the application.json file
-        #int() argument must be a string or a number(5 or attemptsCounter)?
-        attempts = int(request.form.get('attempts'))
-        question_counter = int(request.form.get("question_counter"))
-        score = int(request.form.get('current_score'))
-        question = get_questionary(question_counter)
-        
-        #Check if the answer is correct
-        accepted_answers = request.form.get('accepted_answers').strip().lower()
-        actual_answers = question['answers'].strip().lower()
-        correct = accepted_answers == actual_answers
-        
-        #Scoring correctly question_counter incremented +1
-        while question_counter < 10:
-            if correct:
-                question_counter += 1
-                score += 1
-                attempts = 5
-                next_question = get_questionary(question_counter)
+        question_counter = 0
+        attempts_counter = 0
+        score = 0
+        answer = ''
+    
+    total = len(questionary)
+    if request.method == "POST":
+        if correct_answer == answer:
+            attempts_counter = 0
+            question_counter += 1
+            score += 1 # TODO: improve this by addeding a nice formula
+        else:
+            if attempts_counter <= attempts:
+                attempts_counter += 1
             else:
-                #If answers are incorrect and the number of attempts user have more then 5, take the user to the next question
-                #`attemptsCounter` incremented by 1
-                #questionary[question_counter].attempts
-                if attempts >= 5:
-                    question_counter += 1
-                    score += 1
-                    
-                    next_question = get_questionary(question_counter)
-                    
-    with open("data/application.json", "r") as json_data:
-        data = json.load(json_data)
-        
-    attempts = get_all_attempts()
+                if question_counter == total:
+                    return render_template(
+                        'game_over.html', score=score, player_name=player_name
+                        )
+                attempts_counter = 0
     
+    question_data = questionary[question_counter]
+    attempts = question_data['attempts']
+    correct_answer = question_data['correctAnswerValue']
     return render_template(
-        "game.html", username=username, attempts=attempts,
-    ) 
+        "riddle.html",
+        player_name=player_name,
+        question=question_data['question'],
+        answers=question_data['answers'],
+        question_counter=question_counter,
+        attempts_counter=attempts_counter,
+        score=score,
+        answer=answer,
+        total=total
+    )
     
-    
-@app.route('/<username>/<message>')  
-def send_message(username, message):
-    add_messages(username, message)
-    return redirect(username)
-    
-app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)    
+if __name__ == '__main__':
+    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)    

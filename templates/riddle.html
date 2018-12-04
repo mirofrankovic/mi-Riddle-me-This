@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Teko" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello {{ player_name }}!</h1>
+        <h2>Riddle {{question_counter + 1}} of {{total}}</h2>
+        <h2>Attempts: {{attempts_counter}}</h2>
+        <h2>Score: {{score}}</h2>
+        <ul id="answers">
+        {% for item in answers %}
+            <li>{{ item }}</li>
+        {% endfor %}
+        </ul>
+        <div class="centreForm">
+            <form method="POST" action="{{ player_name }}" class="form-inline">
+                <input type="text" class="form-control" placeholder="answer" name="answer" autofocus>
+                <input type="hidden" name="question_counter" value={{question_counter}}>
+                <input type="hidden" name="attempts_counter" value={{attempts_counter}}>
+                <input type="hidden" name="score" value={{score}}>
+                <button class="btn btn-danger">Answer</button>
+            </form>
+        </div>
+        <div>
+            <p></p>
+        </div>
+    </div>
+    <footer>
+    </footer>
+</body>
+
+</html>
