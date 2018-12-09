@@ -74,6 +74,7 @@ def game(player_name):
         score=score,
         answer=answer,
         total=total
+
     )
     
 if __name__ == '__main__':

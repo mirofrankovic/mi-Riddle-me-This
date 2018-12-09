@@ -2,14 +2,14 @@
     "applicationTitle": "Riddle Me This",
     "questionary": [
     {
-        "question": "How old is Guido",
+        "question": "How old is Guido?",
         "attempts": 5,
         "answers": ["3", "44", "30", "41", "50", "28"],
         "correctAnswerIndex": 3,
         "correctAnswerValue": "41"
     },
     {
-        "question": "How old is Miro",
+        "question": "How old is Miro?",
         "attempts": 5,
         "answers": ["3", "44", "30", "41", "50", "28"],
         "correctAnswerIndex": 3,

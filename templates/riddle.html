@@ -16,6 +16,7 @@
     <div class="container">
         <h1>Hello {{ player_name }}!</h1>
         <h2>Riddle {{question_counter + 1}} of {{total}}</h2>
+        <p>{{question}}</p>
         <h2>Attempts: {{attempts_counter}}</h2>
         <h2>Score: {{score}}</h2>
         <ul id="answers">
@@ -28,6 +29,7 @@
                 <input type="text" class="form-control" placeholder="answer" name="answer" autofocus>
                 <input type="hidden" name="question_counter" value={{question_counter}}>
                 <input type="hidden" name="attempts_counter" value={{attempts_counter}}>
+                <input type="hidden" name="question" value={{question}}>
                 <input type="hidden" name="score" value={{score}}>
                 <button class="btn btn-danger">Answer</button>
             </form>
