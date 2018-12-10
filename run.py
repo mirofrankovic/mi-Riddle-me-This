@@ -77,5 +77,19 @@ def game(player_name):
 
     )
     
+@app.route('/<game_over>', methods=["GET", "POST"])  
+def result(game_over):
+    if request.method == "POST":
+        
+        
+        
+        return render_template(
+            "game_over",
+            )
+        
+        
+        
+
+    
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)    
