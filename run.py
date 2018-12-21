@@ -6,7 +6,7 @@ from flask import Flask, redirect, render_template, request, jsonify, url_for
 
 app = Flask(__name__)
 application_data = []
-questionary = None
+questionary = None # Special Python value. Is returned by functions that do not execute a return statement with a return argument
 with open('data/application.json') as json_file:
     application_data = json.load(json_file)
     questionary = application_data['questionary']
@@ -32,19 +32,22 @@ def game(player_name):
     # (3) If question_counter is equal to total questions -----> (4) if not ---> (1)
     # (4) Shows result of the quiz
     
-    """Question state - Display chat messages"""
+    """Conditionals: Initializing variables"""
     if request.method == "POST":
         form = request.form
         question_counter = int(form['question_counter'])
         attempts_counter = int(form['attempts_counter'])
         score = int(form['score'])
         answer = form['answer']
+        correct_answer = form['correct_answer'] #added from line 53 and bad request!
+        attempts = form['attempts'] #added from line 58
     else:
         question_counter = 0
         attempts_counter = 0
         score = 0
         answer = ''
-    
+        
+    """Question state"""
     total = len(questionary)
     if request.method == "POST":
         if correct_answer == answer:
@@ -73,8 +76,9 @@ def game(player_name):
         attempts_counter=attempts_counter,
         score=score,
         answer=answer,
-        total=total
-
+        total=total,
+        attempts=attempts, #double check attempts
+        correct_anwer=correct_answer #double check correct_answer
     )
     
 @app.route('/<game_over>', methods=["GET", "POST"])  
