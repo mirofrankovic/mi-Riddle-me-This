@@ -50,12 +50,12 @@ def game(player_name):
     """Question state"""
     total = len(questionary)
     if request.method == "POST":
-        if correct_answer == answer:
+        if correct_answer == answer: #error
             attempts_counter = 0
             question_counter += 1
             score += 1 # TODO: improve this by addeding a nice formula
         else:
-            if attempts_counter <= attempts:
+            if attempts_counter <= attempts: #error variable
                 attempts_counter += 1
             else:
                 if question_counter == total:
