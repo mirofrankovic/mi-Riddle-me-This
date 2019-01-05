@@ -28,5 +28,12 @@
         "answers": ["Slovakia", "Germany", "Cuba", "Canada", "Brazil", "USA"],
         "correctAnswerIndex": 0,
         "correctAnswerValue": "Slovakia"
+    },
+    {
+        "question": "Where does Miro live?",
+        "attempts": 5,
+        "answers": ["Rio", "Manchester", "Tokyo", "New York", "Berlin", "Barcelona"],
+        "correctAnswerIndex": 1,
+        "correctAnswerValue": "Manchester"
     }]
 }

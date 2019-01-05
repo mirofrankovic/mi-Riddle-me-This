@@ -2,7 +2,7 @@ import os
 import json
 from datetime import datetime
 
-from flask import Flask, redirect, render_template, request, jsonify, url_for
+from flask import Flask, redirect, render_template, request, jsonify, url_for, flash
 
 app = Flask(__name__)
 application_data = []
@@ -15,7 +15,7 @@ with open('data/application.json') as json_file:
 @app.route('/', methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        player_name = request.form['player_name']
+        player_name = request.form['player_name'] #player_name is a variable
         return redirect(player_name)
     return render_template("index.html")
     
@@ -48,15 +48,19 @@ def game(player_name):
         answer = ''
         
     """Question state"""
-    total = len(questionary)
+    total = len(questionary) #is this a new function len() and stores the retur value for variable total
     if request.method == "POST":
-        if correct_answer == answer: #error
+        if correct_answer == answer: #error in a local variable
             attempts_counter = 0
             question_counter += 1
             score += 1 # TODO: improve this by addeding a nice formula
+            flash('Well! Well! Well! Bim Bam Bom!', 'correct') #go to riddle
+            
         else:
-            if attempts_counter <= attempts: #error variable
+            if attempts_counter <= attempts: #error variable (5 attempts)
                 attempts_counter += 1
+                question_counter += 1 # miro add
+                score += 1 # miro add
             else:
                 if question_counter == total:
                     return render_template(
@@ -67,6 +71,7 @@ def game(player_name):
     question_data = questionary[question_counter]
     attempts = question_data['attempts']
     correct_answer = question_data['correctAnswerValue']
+    correct_answer = question_data['correctAnswerIndex']
     return render_template(
         "riddle.html",
         player_name=player_name,
@@ -81,11 +86,11 @@ def game(player_name):
         correct_anwer=correct_answer #double check correct_answer
     )
     
-@app.route('/<game_over>', methods=["GET", "POST"])  
+@app.route('/<game_over>', methods=["GET", "POST"])  # what is our parameter refering
 def result(game_over):
     if request.method == "POST":
         
-        
+     # add your variables here   
         
         return render_template(
             "game_over",
