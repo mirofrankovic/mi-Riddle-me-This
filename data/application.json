@@ -10,7 +10,7 @@
     },
     {
         "question": "How old is Miro?",
-        "attempts": 5,
+        "attempts": 3,
         "answers": ["3", "44", "30", "41", "50", "28"],
         "correctAnswerIndex": 3,
         "correctAnswerValue": "41"
@@ -24,7 +24,7 @@
     },
     {
         "question": "Where was Miro born?",
-        "attempts": 5,
+        "attempts": 4,
         "answers": ["Slovakia", "Germany", "Cuba", "Canada", "Brazil", "USA"],
         "correctAnswerIndex": 0,
         "correctAnswerValue": "Slovakia"

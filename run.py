@@ -1,8 +1,12 @@
 import os
 import json
 from datetime import datetime
+import logging
 
 from flask import Flask, redirect, render_template, request, jsonify, url_for, flash
+
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 app = Flask(__name__)
 application_data = []
@@ -13,8 +17,8 @@ with open('data/application.json') as json_file:
     json_file.close()
 
 @app.route('/', methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
+def index():  # index is called
+    if request.method == "POST": # route is requested
         player_name = request.form['player_name'] #player_name is a variable
         return redirect(player_name)
     return render_template("index.html")
@@ -38,9 +42,11 @@ def game(player_name):
         question_counter = int(form['question_counter'])
         attempts_counter = int(form['attempts_counter'])
         score = int(form['score'])
-        answer = form['answer']
-        correct_answer = form['correct_answer'] #added from line 53 and bad request!
-        attempts = form['attempts'] #added from line 58
+        answer = int(form['answer'])
+        correct_answer = int(form['correct_answer']) #added from line 53 and bad request!
+        attempts = int(form['attempts']) #added from line 58
+        print("answer={}".format(answer))
+        print("correct_answer={}".format(correct_answer))
     else:
         question_counter = 0
         attempts_counter = 0
@@ -54,24 +60,30 @@ def game(player_name):
             attempts_counter = 0
             question_counter += 1
             score += 1 # TODO: improve this by addeding a nice formula
-            flash('Well! Well! Well! Bim Bam Bom!', 'correct') #go to riddle
-            
+            # flash('Well! Well! Well! Your guess is...!', 'correct') #go to riddle
         else:
-            if attempts_counter <= attempts: #error variable (5 attempts)
+            print("attempts_counter={} of attempts={}".format(attempts_counter, attempts))
+            print("attempts_counter <= attempts={}".format(attempts_counter <= attempts))
+            if attempts_counter < attempts: #error variable (5 attempts)
                 attempts_counter += 1
-                question_counter += 1 # miro add
-                score += 1 # miro add
             else:
-                if question_counter == total:
-                    return render_template(
-                        'game_over.html', score=score, player_name=player_name
-                        )
+                question_counter += 1
                 attempts_counter = 0
+                print("question_counter={} total={}".format(question_counter, total))
+                print("question_counter <= total={}".format(question_counter == total))
+        if question_counter == total:
+            return render_template(
+                'game_over.html', score=score, player_name=player_name
+                )
+                
+    # check if the answer is correct:
+    
     
     question_data = questionary[question_counter]
     attempts = question_data['attempts']
-    correct_answer = question_data['correctAnswerValue']
     correct_answer = question_data['correctAnswerIndex']
+    logger.debug("correct_answer={}".format(correct_answer))
+    print("correct_answer={}".format(correct_answer))
     return render_template(
         "riddle.html",
         player_name=player_name,
@@ -83,7 +95,7 @@ def game(player_name):
         answer=answer,
         total=total,
         attempts=attempts, #double check attempts
-        correct_anwer=correct_answer #double check correct_answer
+        correct_answer=correct_answer #double check correct_answer
     )
     
 @app.route('/<game_over>', methods=["GET", "POST"])  # what is our parameter refering
