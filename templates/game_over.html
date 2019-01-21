@@ -13,11 +13,27 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>{{ player_name }} {{ score }}</h1>
+<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+    <div id="home-header" class="col" >
+        {% if score %}
+        <h1 class="main-header display-3">Congratulations!</h1>
+        {% else %}
+        <h1 class="main-header display-3">You have got to the top of the charts!</h1>
+        {% endif %}
+    </div>  
+    
+    
+    <div class="col">
+        <div class="dark-div">
+        {% if score %}   
+        <h1>Hi {{ player_name }} your score is {{ score }}</h1>
+        {% endif %}
+        
+        <div>
     </div>
-    <footer>
-    </footer>
+        <div>  
+<section>
 </body>
 
 </html>

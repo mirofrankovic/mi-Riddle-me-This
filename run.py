@@ -94,7 +94,7 @@ def game(player_name):
         score=score,
         answer=answer,
         total=total,
-        attempts=attempts, #double check attempts
+        attempts=attempts,            #double check attempts
         correct_answer=correct_answer #double check correct_answer
     )
     
