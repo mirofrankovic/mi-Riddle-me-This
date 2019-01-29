@@ -15,10 +15,27 @@ with open('data/application.json') as json_file:
     application_data = json.load(json_file)
     questionary = application_data['questionary']
     json_file.close()
+    
+def add_to_leaderboard(player_name, score):
+    users = get_users()
+    with open('data/users.txt', 'a') as leaderboard:
+        if not (player_name, score) in users:
+            leaderboard.write('\n{}:{}'.format(str(player_name), (score)))
+            
+def get_users():
+    with open('data/users.txt') as users:
+        users = [line for line in users.readlines()[1:]]
+        sorted_users = []
+        for user in users:
+            tupe = (user.split(':')[0].strip(), int(user.split(':')[1].strip()))
+            sorted_users.append(tupe)
+            return sorted(sorted_users, key=lambda x: x[1])[::-1][:5]
+            
+        
 
 @app.route('/', methods=["GET", "POST"])
-def index():  # index is called
-    if request.method == "POST": # route is requested
+def index():                                      # index is called
+    if request.method == "POST":                  # route is requested
         player_name = request.form['player_name'] #player_name is a variable
         return redirect(player_name)
     return render_template("index.html")
@@ -64,7 +81,7 @@ def game(player_name):
         else:
             print("attempts_counter={} of attempts={}".format(attempts_counter, attempts))
             print("attempts_counter <= attempts={}".format(attempts_counter <= attempts))
-            if attempts_counter < attempts: #error variable (5 attempts)
+            if attempts_counter < attempts:                                              #error variable (5 attempts)
                 attempts_counter += 1
             else:
                 question_counter += 1
@@ -102,10 +119,10 @@ def game(player_name):
 def result(game_over):
     if request.method == "POST":
         
-     # add your variables here   
+        users = get_users()
         
         return render_template(
-            "game_over",
+            "game_over", users=users
             )
         
         

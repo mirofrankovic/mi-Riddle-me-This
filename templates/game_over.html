@@ -30,6 +30,24 @@
         <h1>Hi {{ player_name }}! Your score is {{ score }}</h1>
         {% endif %}
         
+        {% if users | length > 0 %}
+        <p class="lead">Leaderboard:</p>
+        <table class="table leaderboard-table">
+            <tbody>
+                <tr>
+                    <th>player_name</th>
+                    <th>score</th>
+                </tr>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.0 }}</td>
+                    <td>{{ user.1 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+        {% endif %}
+        
         <div>
     </div>
         <div>  
