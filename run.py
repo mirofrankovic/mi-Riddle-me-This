@@ -16,21 +16,40 @@ with open('data/application.json') as json_file:
     questionary = application_data['questionary']
     json_file.close()
     
-def add_to_leaderboard(player_name, score):
-    users = get_users()
-    with open('data/users.txt', 'a') as leaderboard:
-        if not (player_name, score) in users:
-            leaderboard.write('\n{}:{}'.format(str(player_name), (score)))
+def write_to_file(filename, data):
+    with open(filename, 'a') as file:
+        file.writelines(data)
+        
+#function to add a player to the leaderboard
+#def final_score(player_name, score):
+    #if player_name != "" and score != "":
+    #with open('data/scores.txt', 'a') as file:
+        #if int(score) > 0 and int(score) < 10:
+        #    score = "0" + str(score)
+        #file.writelines(str(score) + "\n")
+        #file.writelines(str(player_name) + "\n")
+    #else:
+     #   return        
+    
+
             
-def get_users():
-    with open('data/users.txt') as users:
-        users = [line for line in users.readlines()[1:]]
-        sorted_users = []
-        for user in users:
-            tupe = (user.split(':')[0].strip(), int(user.split(':')[1].strip()))
-            sorted_users.append(tupe)
-            return sorted(sorted_users, key=lambda x: x[1])[::-1][:5]
-            
+    #function to get the best top 5-10 players           
+def get_scores():
+    player_names = []
+    scores = []
+    
+    with open('data/scores.txt', 'r') as file:
+        lines = file.read().splitlines()
+        
+    for i, text in enumerate(lines):
+        if i%2 == 0:
+            scores.append(text)
+        else:
+            player_names.append(text)
+    player_names_and_scores = sorted(zip(player_names, scores), key=lambda x: x[1], reverse=True)
+    return player_names_and_scores       
+        
+        
         
 
 @app.route('/', methods=["GET", "POST"])
@@ -60,8 +79,8 @@ def game(player_name):
         attempts_counter = int(form['attempts_counter'])
         score = int(form['score'])
         answer = int(form['answer'])
-        correct_answer = int(form['correct_answer']) #added from line 53 and bad request!
-        attempts = int(form['attempts']) #added from line 58
+        correct_answer = int(form['correct_answer'])                 
+        attempts = int(form['attempts'])                             
         print("answer={}".format(answer))
         print("correct_answer={}".format(correct_answer))
     else:
@@ -73,7 +92,7 @@ def game(player_name):
     """Question state"""
     total = len(questionary) #is this a new function len() and stores the retur value for variable total
     if request.method == "POST":
-        if correct_answer == answer: #error in a local variable
+        if correct_answer == answer: 
             attempts_counter = 0
             question_counter += 1
             score += 1 # TODO: improve this by addeding a nice formula
@@ -89,6 +108,8 @@ def game(player_name):
                 print("question_counter={} total={}".format(question_counter, total))
                 print("question_counter <= total={}".format(question_counter == total))
         if question_counter == total:
+            
+           # final_score(player_name, score) #added final_score 
             return render_template(
                 'game_over.html', score=score, player_name=player_name
                 )
@@ -115,14 +136,14 @@ def game(player_name):
         correct_answer=correct_answer #double check correct_answer
     )
     
-@app.route('/<game_over>', methods=["GET", "POST"])  # what is our parameter refering
+@app.route('/<game_over>')  # what is our parameter refering
 def result(game_over):
-    if request.method == "POST":
+    
         
-        users = get_users()
+        player_names_and_scores = get_scores()
         
         return render_template(
-            "game_over", users=users
+            "game_over", player_names_and_scores=player_names_and_scores 
             )
         
         

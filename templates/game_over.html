@@ -30,18 +30,22 @@
         <h1>Hi {{ player_name }}! Your score is {{ score }}</h1>
         {% endif %}
         
-        {% if users | length > 0 %}
+        {% if scores | length > 0 %}
         <p class="lead">Leaderboard:</p>
         <table class="table leaderboard-table">
-            <tbody>
+            <thead>
                 <tr>
+                    <th>rank</th>
                     <th>player_name</th>
                     <th>score</th>
                 </tr>
-                {% for user in users %}
+            <thead>
+            <thbody> 
+                {% for i in range(10) %}
                 <tr>
-                    <td>{{ user.0 }}</td>
-                    <td>{{ user.1 }}</td>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ player_names_and_scores[i][0] }}</td>
+                    <td>{{ player_names_and_scores[i][1] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
