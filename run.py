@@ -16,28 +16,15 @@ with open('data/application.json') as json_file:
     questionary = application_data['questionary']
     json_file.close()
     
-def write_to_file(filename, data):
-    with open(filename, 'a') as file:
-        file.writelines(data)
-        
-#function to add a player to the leaderboard
-#def final_score(player_name, score):
-    #if player_name != "" and score != "":
-    #with open('data/scores.txt', 'a') as file:
-        #if int(score) > 0 and int(score) < 10:
-        #    score = "0" + str(score)
-        #file.writelines(str(score) + "\n")
-        #file.writelines(str(player_name) + "\n")
-    #else:
-     #   return        
-    
+def final_score(player_name, score):
+    if player_name != "" and score != "":
+        with open('data/scores.txt', 'a') as file:
+            file.writelines(str(score) + "\n")
+            file.writelines(str(player_name) + "\n")
 
-            
-    #function to get the best top 5-10 players           
 def get_scores():
     player_names = []
     scores = []
-    
     with open('data/scores.txt', 'r') as file:
         lines = file.read().splitlines()
         
@@ -48,10 +35,7 @@ def get_scores():
             player_names.append(text)
     player_names_and_scores = sorted(zip(player_names, scores), key=lambda x: x[1], reverse=True)
     return player_names_and_scores       
-        
-        
-        
-
+      
 @app.route('/', methods=["GET", "POST"])
 def index():                                      # index is called
     if request.method == "POST":                  # route is requested
@@ -108,11 +92,14 @@ def game(player_name):
                 print("question_counter={} total={}".format(question_counter, total))
                 print("question_counter <= total={}".format(question_counter == total))
         if question_counter == total:
-            
-           # final_score(player_name, score) #added final_score 
+            final_score(player_name, score) 
+            player_names_and_scores = get_scores()
             return render_template(
-                'game_over.html', score=score, player_name=player_name
-                )
+                "game_over.html",
+                score=score,
+                player_name=player_name,
+                player_names_and_scores=player_names_and_scores 
+            ) 
                 
     # check if the answer is correct:
     
@@ -136,19 +123,14 @@ def game(player_name):
         correct_answer=correct_answer #double check correct_answer
     )
     
-@app.route('/<game_over>')  # what is our parameter refering
-def result(game_over):
-    
+# @app.route('/<game_over>')                                # what is our parameter refering
+# def result(game_over):
+#     player_names_and_scores = get_scores()
+#     return render_template(
+#         "game_over", player_names_and_scores=player_names_and_scores 
+#     )
         
-        player_names_and_scores = get_scores()
-        
-        return render_template(
-            "game_over", player_names_and_scores=player_names_and_scores 
-            )
-        
-        
-        
+if __name__ == '__main__':
+    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
 
     
-if __name__ == '__main__':
-    app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)    

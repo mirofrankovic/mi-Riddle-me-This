@@ -13,49 +13,47 @@
 </head>
 
 <body>
-<section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
-    <div id="home-header" class="col" >
-        {% if score %}
-        <h1 class="main-header display-3">Congratulations!</h1>
-        {% else %}
-        <h1 class="main-header display-3">You have got to the top of the charts!</h1>
-        {% endif %}
-    </div>  
-    
-    
-    <div class="col">
-        <div class="dark-div">
-        {% if score %}   
-        <h1>Hi {{ player_name }}! Your score is {{ score }}</h1>
-        {% endif %}
+            <div id="home-header" class="col" >
+                {% if score %}
+                <h1 class="main-header display-3">Congratulations!</h1>
+                {% else %}
+                <h1 class="main-header display-3">You have got to the top of the charts!</h1>
+                {% endif %}
+            </div>  
         
-        {% if scores | length > 0 %}
-        <p class="lead">Leaderboard:</p>
-        <table class="table leaderboard-table">
-            <thead>
-                <tr>
-                    <th>rank</th>
-                    <th>player_name</th>
-                    <th>score</th>
-                </tr>
-            <thead>
-            <thbody> 
-                {% for i in range(10) %}
-                <tr>
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ player_names_and_scores[i][0] }}</td>
-                    <td>{{ player_names_and_scores[i][1] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table> 
-        {% endif %}
-        
-        <div>
-    </div>
+            <div class="col">
+                <div class="dark-div">
+                    {% if score %}   
+                    <h1>Hi {{ player_name }}! Your score is {{ score }}</h1>
+                    {% endif %}
+                    
+                    {% if player_names_and_scores | length > 0 %}
+                    <p class="lead">Leaderboard:</p>
+                    <table class="table leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>rank</th>
+                                <th>player_name</th>
+                                <th>score</th>
+                            </tr>
+                        <thead>
+                        <thbody> 
+                            {% for player_name_and_score in player_names_and_scores %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ player_name_and_score[0] }}</td>
+                                <td>{{ player_name_and_score[1] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                    {% endif %}
+                </div>
+            </div>
         <div>  
-<section>
+    <section>
 </body>
 
 </html>
