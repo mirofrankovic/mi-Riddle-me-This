@@ -19,8 +19,12 @@ with open('data/application.json') as json_file:
 def final_score(player_name, score):
     if player_name != "" and score != "":
         with open('data/scores.txt', 'a') as file:
+          # if int(score) > 0 and int(score) < 10: #added miro to create only top 10 players
+           #    score = "0" + str(score)           #added miro
             file.writelines(str(score) + "\n")
             file.writelines(str(player_name) + "\n")
+    #else:
+     #   return
 
 def get_scores():
     player_names = []
@@ -119,8 +123,8 @@ def game(player_name):
         score=score,
         answer=answer,
         total=total,
-        attempts=attempts,            #double check attempts
-        correct_answer=correct_answer #double check correct_answer
+        attempts=attempts,            
+        correct_answer=correct_answer 
     )
     
 # @app.route('/<game_over>')                                # what is our parameter refering
