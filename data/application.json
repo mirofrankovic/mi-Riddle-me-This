@@ -65,7 +65,7 @@
         "correctAnswerValue": "Raleigh"
     },
     {
-        "question": "Who is the most famous Slovak hero?"
+        "question": "Who is the most famous Slovak hero?",
         "attempts": 5,
         "answers": ["Miro", "Palo", "Fero", "Tibike", "Janko Hrasko", "Jurko Janosik"],
         "correctAnswerIndex": 5,

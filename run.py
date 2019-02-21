@@ -19,12 +19,9 @@ with open('data/application.json') as json_file:
 def final_score(player_name, score):
     if player_name != "" and score != "":
         with open('data/scores.txt', 'a') as file:
-          # if int(score) > 0 and int(score) < 10: #added miro to create only top 10 players
-           #    score = "0" + str(score)           #added miro
             file.writelines(str(score) + "\n")
             file.writelines(str(player_name) + "\n")
-    #else:
-     #   return
+   
 
 def get_scores():
     player_names = []
@@ -38,12 +35,24 @@ def get_scores():
         else:
             player_names.append(text)
     player_names_and_scores = sorted(zip(player_names, scores), key=lambda x: x[1], reverse=True)
-    return player_names_and_scores       
+    return player_names_and_scores  
+    
+#def get_topleaders():
+#    with open('data/scores.txt', 'r') as scores:
+#        scores = [line for line in scores.readlines()[1:]]
+#    top_playername_score = []    
+#        
+#   for score in scores:
+#        tupe = (score.split(':')[0].strip, int(score.split(':')[1].strip()))
+#        top_playername_score.append(tupe)
+#
+#    return sorted(top_playername_score, key=lambda x: x[1])[::-1][:10] 
+    
       
 @app.route('/', methods=["GET", "POST"])
-def index():                                      # index is called
-    if request.method == "POST":                  # route is requested
-        player_name = request.form['player_name'] #player_name is a variable
+def index():                                          # index is called
+    if request.method == "POST":                      # route is requested
+        player_name = request.form['player_name']     #player_name is a variable
         return redirect(player_name)
     return render_template("index.html")
     
@@ -88,7 +97,7 @@ def game(player_name):
         else:
             print("attempts_counter={} of attempts={}".format(attempts_counter, attempts))
             print("attempts_counter <= attempts={}".format(attempts_counter <= attempts))
-            if attempts_counter < attempts:                                              #error variable (5 attempts)
+            if attempts_counter < attempts:                                              
                 attempts_counter += 1
             else:
                 question_counter += 1
@@ -97,7 +106,7 @@ def game(player_name):
                 print("question_counter <= total={}".format(question_counter == total))
         if question_counter == total:
             final_score(player_name, score) 
-            player_names_and_scores = get_scores()
+            player_names_and_scores = get_scores() # get_scores + 10topleaders need to add
             return render_template(
                 "game_over.html",
                 score=score,
@@ -127,12 +136,12 @@ def game(player_name):
         correct_answer=correct_answer 
     )
     
-# @app.route('/<game_over>')                                # what is our parameter refering
-# def result(game_over):
-#     player_names_and_scores = get_scores()
-#     return render_template(
-#         "game_over", player_names_and_scores=player_names_and_scores 
-#     )
+# @app.route('/<game_over>', methods=["GET", "POST"])                                # what is our parameter refering
+ #def gamer(game_over):
+  # player_names_and_scores = get_scores()
+   #return render_template(
+    #    "game_over", player_names_and_scores=player_names_and_scores 
+#   )
         
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
