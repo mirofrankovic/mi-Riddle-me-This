@@ -37,9 +37,26 @@ def get_scores():
     player_names_and_scores = sorted(zip(player_names, scores), key=lambda x: x[1], reverse=True)
     return player_names_and_scores  
     
+    
+    
+def get_topleaders():                  #create a dictionary
+    scores = {}
+    #variable = None
+    with open('data/scores.txt', 'r') as file:
+        for line in file.readlines():
+            scores[int(line.split(':')[1].strip())] = line.split("'")[0].strip()
+
+    player_names = {} 
+    for i in range(10):    
+        #undefined variable player_name.... set variable to None
+        player_names[scores[max(scores.key())]] = max(scores.key())
+        del scores[max(scores.key())]
+    print player_names   
+    
+    
 #def get_topleaders():
 #    with open('data/scores.txt', 'r') as scores:
-#        scores = [line for line in scores.readlines()[1:]]
+#         scores = [line for line in scores.readlines()[1:]]
 #    top_playername_score = []    
 #        
 #   for score in scores:
@@ -47,6 +64,11 @@ def get_scores():
 #        top_playername_score.append(tupe)
 #
 #    return sorted(top_playername_score, key=lambda x: x[1])[::-1][:10] 
+
+
+
+
+
     
       
 @app.route('/', methods=["GET", "POST"])
