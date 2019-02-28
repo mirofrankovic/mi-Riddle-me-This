@@ -16,35 +16,61 @@ with open('data/application.json') as json_file:
     questionary = application_data['questionary']
     json_file.close()
     
-
-def save_scores(top_ten_players):
-    with open('data/scores.txt', 'w') as file:
-        for player in top_ten_players:    
-            file.writelines(str(player[0]) + "\n")
-            file.writelines(str(player[1]) + "\n")
+def final_score(player_name, score):
+    if player_name != "" and score != "":
+        with open('data/scores.txt', 'a') as file:
+            file.writelines(str(score) + "\n")
+            file.writelines(str(player_name) + "\n")
    
-         
-def load_scores():
+
+def get_scores():
+    player_names = []
+    scores = []
     with open('data/scores.txt', 'r') as file:
         lines = file.read().splitlines()
         
-    player_names = []
-    scores = []
     for i, text in enumerate(lines):
         if i%2 == 0:
-            player_names.append(text)
-        else:
             scores.append(text)
-
-    return zip(player_names, scores)
-
-
-def get_score_table(player_name, score):
-    top_ten = load_scores()
-    top_ten.append((player_name, score))
-    return sorted(top_ten, key=lambda x: int(x[1]), reverse=True)
+        else:
+            player_names.append(text)
+    player_names_and_scores = sorted(zip(player_names, scores), key=lambda x: x[1], reverse=True)
+    return player_names_and_scores  
     
     
+    
+def get_topleaders():                  #create a dictionary
+    scores = {}
+    #variable = None
+    with open('data/scores.txt', 'r') as file:
+        for line in file.readlines():
+            scores[int(line.split(':')[1].strip())] = line.split("'")[0].strip()
+
+    player_names = {} 
+    for i in range(10):    
+        #undefined variable player_name.... set variable to None
+        player_names[scores[max(scores.key())]] = max(scores.key())
+        del scores[max(scores.key())]
+    print player_names   
+    
+    
+#def get_topleaders():
+#    with open('data/scores.txt', 'r') as scores:
+#         scores = [line for line in scores.readlines()[1:]]
+#    top_playername_score = []    
+#        
+#   for score in scores:
+#        tupe = (score.split(':')[0].strip, int(score.split(':')[1].strip()))
+#        top_playername_score.append(tupe)
+#
+#    return sorted(top_playername_score, key=lambda x: x[1])[::-1][:10] 
+
+
+
+
+
+    
+      
 @app.route('/', methods=["GET", "POST"])
 def index():                                          # index is called
     if request.method == "POST":                      # route is requested
@@ -101,8 +127,8 @@ def game(player_name):
                 print("question_counter={} total={}".format(question_counter, total))
                 print("question_counter <= total={}".format(question_counter == total))
         if question_counter == total:
-            player_names_and_scores = get_score_table(player_name, score)
-            save_scores(player_names_and_scores[:10])
+            final_score(player_name, score) 
+            player_names_and_scores = get_scores() # get_scores + 10topleaders need to add
             return render_template(
                 "game_over.html",
                 score=score,
