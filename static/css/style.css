@@ -1,7 +1,7 @@
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #B0E0E6;
+    font-family: 'Indie+Flower|Teko';
+    background-color: purple;
     margin-bottom: 60px;
 }
 .image {
@@ -14,8 +14,42 @@ body {
     vertical-align: center;
     text-align: center;
 }
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Indie+Flower|Teko', cursive;
+    font-weight: 700;
+}
+
 h1 {
+    font-size: 6rem;
     color: white;
     text-align: center;
 }
+h2 {
+    color: green;
+    text-align: center;
+}
+
+p.lead {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: green;
+}
+.col {
+    text-align: center;
+    
+}
+
+
+
+
+
+
+
+
+
+
 
