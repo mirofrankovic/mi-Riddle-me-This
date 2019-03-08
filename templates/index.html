@@ -6,25 +6,26 @@
     <div class="container">
         <h1 class="mb-0 text-center">Welcome to my game!!!!</h1>
         
-        <p class="lead subheading mb-4 text-center">Do you want to know more about my game????</p>
+        <div class="lead text-center">Can you beat my riddler????</div>
         
-        <h1 class="question text-center">Riddle me this and seek for your answer!</h1>
-        <hr />
+        <h1 class="mb-0 text-center">Try your best and seek for your answer!</h1>
+    
     </div>
+    <br>
     <div class="text-center">
         <img class="image"
             src="{{ url_for('static', filename='images/gollum.jpg') }}"
             alt="Generic placeholder image" width="200" height="200">
     </div>
 
-    <hr />
+    <br>
 
     <div class="text-center">
         <!-- action attribute tells the browser where should it submit the form -->
         <form method="POST">
-            <label for="username">Player Name:</label>
-            <input type="text" name="player_name" autofoxus>
-            <button type="submit" class="btn btn-danger">Start</button>
+    
+            <input id="player_name" type="text" name="player_name" class="form-control" placeholder="Player Name"/>
+            <button type="submit" class="btn btn-md btn-block btn-danger">Start</button>
         </form>
     </div>
 </div>

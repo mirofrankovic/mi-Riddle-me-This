@@ -20,11 +20,11 @@ h2,
 h3,
 h4 {
     font-family: 'Indie+Flower|Teko', cursive;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     color: white;
     text-align: center;
 }
@@ -33,9 +33,10 @@ h2 {
     text-align: center;
 }
 
-p.lead {
-    font-size: 1.15rem;
-    font-weight: 400;
+.lead {
+    text-align: justify;
+    font-size: 1.5rem;
+    font-weight: 500;
     color: green;
 }
 .col {
