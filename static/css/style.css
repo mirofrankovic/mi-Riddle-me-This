@@ -34,15 +34,18 @@ h2 {
 }
 
 .lead {
-    text-align: justify;
-    font-size: 1.5rem;
+    font-family: cursive;
+    text-align: center;
+    /*font-size: 2.5rem;*/
     font-weight: 500;
     color: green;
 }
+
 .col {
     text-align: center;
     
 }
+
 
 
 
