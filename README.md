@@ -1,8 +1,8 @@
-Code Institute Milestone Project 2
+# *Code Institute Milestone Project 2*
 
 This is Practical Python Milestone Project called Riddle Me This. It is a project as part of the syllabus on the Full Stack Web Development course.
 
-Description:
+* Description:
 # *RIDDLE-ME-THIS* GUESSING GAME
 
 Build a web application game that asks players to guess the answer to a
@@ -31,7 +31,7 @@ At the end of the game, the players score will be recorded on the leaderboard us
 * Data (Text or Images)
 * A list of option to select the correct answer.
 
-Structure:
+* Structure:
 
 (0) Initial state (Variables are initialized) ----> (1)
 (1) Question state (Render the question with the list of answers)
@@ -57,29 +57,29 @@ variable that keeps the index of the current question in progress.
 
 * When `question_counter` reaches the total of questions then the game is over.
 
-Some of the tech used includes:
-HTML and CSS
+* Some of the tech used includes:
+* HTML and CSS
     To structure and style the web app content, Including creating the POST method form
-Python2
+* Python2
     To design the logic of the game
     For reading from, and writing to, the game’s text files
     For unit testing the game’s functions. These tests are found in test_game.py
     Creating a requirements.txt and Procfile to deploy the app on Heroku
     Sorting the leadboard data
-Flask
+* Flask
     For binding functions to URLs using routing
     To render HTML templates, including the use of a base template. These templates are in the templates directory
     To enable Python programming within HTML pages
     To trigger functions on GET or POST requests
     For getting data from, and dumping data to, JSON files
     Used for debugging
-JSON
+* JSON
     For storing and editing player data (players.json) and previously asked questions (used_questions.json) throughout the game
     Used to store high score data, found in /data/high_scores.json
-Bootstrap
+* Bootstrap
     Used primarily for the website’s grid layout and for styling buttons, player cards, and the leaderboard table
-    Heroku https:...
+    Heroku https: ...
     Final deployment of the app
     
-Testing:    
+* Testing:    
 
