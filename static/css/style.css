@@ -1,7 +1,7 @@
 
 body {
     font-family: 'Indie+Flower|Teko';
-    background-color: purple;
+    background-color: black;
     margin-bottom: 60px;
 }
 .image {
@@ -44,6 +44,10 @@ h2 {
 .col {
     text-align: center;
     
+}
+
+#answers {
+    color: green;
 }
 
 
