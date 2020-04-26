@@ -2,8 +2,8 @@
 
 {% block core %}
 
-<div class="main"> 
-    <div class="btn-success">
+
+    <div class="btn-success d-column d-flex">
         <h1 class="mb-0 text-center">Welcome to my game!!!!</h1>
         
        <div class="lead">
@@ -18,13 +18,13 @@
         <img class="danger" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image"  style="width:100%; height:100%">
         <h1 class="mb-0 text-center">Try your best and seek for your answer!</h1>    
        <!--</div>-->
-    </div>
-</div> 
+    
+
 
 
     <div class="row-white">
         <!-- action attribute tells the browser where should it submit the form -->
-        <form class="col s-12" method="POST">
+        <form class="d-col" method="POST">
     
             <input id="player_name" type="text" name="player_name" class="form-control" placeholder="Player Name"/>
             <!--<button type="submit" class="btn btn-md btn-block btn-danger">Start</button>-->

@@ -1,7 +1,7 @@
 
 body {
     font-family: 'Indie+Flower|Teko';
-    background-color: black;
+    background-image: linear-gradient(260deg, #f3f1f3  0%,  #2376ae 100%);
     margin-bottom: 60px;
 }
 .image {
@@ -56,6 +56,7 @@ table.center {
     color:pink;
     
 }
+
 
 
 

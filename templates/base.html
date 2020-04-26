@@ -27,8 +27,14 @@
     
     
 <body>
-<div class="overlay"></div>
-<section id="core" class="container-fluid">
+    
+    {% block navbarbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
+
+
+    
+<section id="core" class="container-fluid"> 
                 <div class="container">
                     
                     {% block core %}
@@ -36,9 +42,15 @@
                     
                     
                 </div>
+                 
+               
     
     
 </section>
+
+    {% block footer %}
+	{% include "footer.html" %}
+	{% endblock %}
 
  
 
