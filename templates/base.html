@@ -27,14 +27,27 @@
     
     
 <body>
-    
-    {% block navbarbar %}
-    {% include 'navbar.html' %}
-    {% endblock %}
+    <header>
+            <nav> 
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+                  Q
+               </div>
+               <div class="menu">
+                  <ul>
+                     <li><a href="#">Home</a></li>
+                     <li><a href="#">About</a></li>
+                     <li><a href="#">Blog</a></li>
+                     
+                  </ul>
+               </div>
+            </nav>
 
 
     
-<section id="core" class="container-fluid"> 
+<section id="core">
                 <div class="container">
                     
                     {% block core %}
@@ -48,12 +61,18 @@
     
 </section>
 
-    {% block footer %}
-	{% include "footer.html" %}
-	{% endblock %}
+   <footer>
+    <div class="row">
+      <div class="col-12 col-md-4"></div>
+      <div class="col-12 col-md-4 text-center">
+        <p>Copyright &copy; Made with <i class="far fa-heart" style="color:#FB3005;"></i></i> Miro Frankovic 2020</p>
+      </div>
+      <div class="col-12 col-md-4"></div>
+    </div>
+</footer>
 
  
-
+</header>
 
 <!-- Bootstrap core for Java Script -->
 
