@@ -1,18 +1,8 @@
 
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Teko" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" />
-    <title>{{ page_title }}</title>
-</head>
+{% block core %}
 
-<body>
     <div class="container">
         <h1>Hello {{ player_name }}!</h1>
         <h2>Riddle {{question_counter + 1}} of {{total}}</h2>
@@ -41,8 +31,6 @@
             <p></p>
         </div>
     </div>
-    <footer>
-    </footer>
-</body>
-
-</html>
+    
+    
+ {% endblock %}
