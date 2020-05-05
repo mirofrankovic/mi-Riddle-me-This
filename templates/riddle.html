@@ -3,8 +3,10 @@
 
 {% block core %}
 
-    <div class="container">
-        <h1>Hello {{ player_name }}!</h1>
+ <div class="container">
+   <!-- <div class="d-column d-flex"> -->
+   <div class="main">
+        <h1 class="mb-0">Hello {{ player_name }}!</h1>
         <h2>Riddle {{question_counter + 1}} of {{total}}</h2>
         <h1>{{question}}</h1>
         <h2>Attempts: {{attempts_counter}} of {{attempts}}</h2>
@@ -14,9 +16,15 @@
             <li>{{ item }}</li>
         {% endfor %}
         </ul>
+    </div>
         <p><span>Correct Answer: {{correct_answer}}</span></p>
-        <div class="centreForm">
-            <form method="POST" action="{{ player_name }}" class="form-inline">
+      
+       <!-- <div class="centreForm"> -->
+      <div class="row">
+          <div class="col-12 col-md-6"></div>
+          <!-- <div class="col-12 col-md-6"></div> -->
+            <div class="col-12 col-md-6"> 
+              <form method="POST" action="{{ player_name }}" class="form-inline">
                 <input type="text" class="form-control" placeholder="Enter your answer" name="answer" autofocus>
                 <input type="hidden" name="question_counter" value={{question_counter}}>
                 <input type="hidden" name="attempts_counter" value={{attempts_counter}}>
@@ -24,13 +32,13 @@
                 <input type="hidden" name="score" value={{score}}>
                 <input type="hidden" name="correct_answer" value={{correct_answer}}>
                 <input type="hidden" name="attempts" value={{attempts}}>
-                <button type="submit" class="btn btn-md btn-success">Enter your next Question</button>
-            </form>
-        </div>
-        <div>
-            <p></p>
-        </div>
-    </div>
+                <button type="submit" class="btn btn-md btn-danger">Enter your next Question</button>
+              </form>
+            </div>
+                      <!-- <div class="col-12 col-md-4"></div>-->
+      </div> 
+  </div>
+   
     
     
  {% endblock %}

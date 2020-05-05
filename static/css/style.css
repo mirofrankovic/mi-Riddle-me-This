@@ -2,6 +2,8 @@ html, body {
       margin: 0;
       padding: 0;
       width: 100%;
+      height: 100%;
+      
 }
 
 
@@ -14,7 +16,7 @@ body {
 
 header {
       width: 100%;
-      height: 100vh;
+      height: 100vh; 
       background: url("/static/images/gollum.jpg") no-repeat 50% 50%;
       background-size: cover;
 }
@@ -109,6 +111,10 @@ nav ul li a {
 
 /*............................content............................*/
 
+.main {
+    margin-top: 100px;
+}
+
 
 
 
@@ -128,10 +134,33 @@ nav ul li a {
 
 
 .form-inline {
-    padding-top: 0px;
+   /* padding-top: 0px;
     vertical-align: center;
-    text-align: center;
+    text-align: center;*/
+    height: 43px;
+   /* width: 20em;
+    display: flex; */
+    flex-direction: row;
+    
 }
+.form-control {
+    height: 41px;
+    width: 20em;
+}
+
+/*
+
+.flex {
+    display: flex;
+}
+*/
+
+
+input {
+  display: block;      /* 1. oh noes, my inputs are styled as block... */
+} 
+
+
 
 h1,
 h2,
@@ -144,11 +173,12 @@ h4 {
 h1 {
     font-size: 5rem;
     color: blue;
-    text-align: center;
+    text-align: right;
+    margin-top: 0px;
 }
 h2 {
     color: green;
-    text-align: center;
+    text-align: right;
 }
 
 .lead {
@@ -174,23 +204,59 @@ table.center {
     color:pink;
     
 }
+.btn-md {
+     width: 15.7em;
+     padding: 10px 0px;
+}
+    
 
 
 .btn-lg {
     margin-top: 5px;
+    width: 15.7em;
+    padding: 10px 0px;
+}
+
+.btn-danger {
+    background-color: #062425;
+    border-color: black;
 }
 
 /*..............footer......................*/
 
 footer {
+	/*position: absolute; */
+	/*position: relative; */
+	/*position: static; */
 	position: absolute;
 	left: 0;
+	right:0;
 	bottom: 0;
 	width: 100%;
 	background-color: rgba(255, 50, 0, 0.45);
 	color: #fff;
 	box-shadow: 0px 0px 6px rgba(255, 50, 0, 0.45);
+	
 }
+
+@media only screen and (max-width: 767px){
+footer {
+background-color: rgba(255, 50, 0, 0.45);
+color: #FFF;
+font-size:.8em;
+margin-top:0px;
+padding-top: 15px;
+padding-bottom: 10px;
+position:static;
+/*position:sticky; */
+left:0;
+bottom:0;
+width:100%;
+}
+}
+
+
+
 
 footer .lead {
     padding: 0;
