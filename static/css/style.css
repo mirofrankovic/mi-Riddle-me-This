@@ -20,16 +20,20 @@ header {
       background: url("/static/images/gollum.jpg") no-repeat 50% 50%;
       background-size: cover;
 }
-.logo {
+
+
+.logo h1 {
       line-height: 60px;
       position: fixed;
       float: left;
       margin: 16px 46px;
-      color: red;
+      color: gold;
       font-weight: bold;
       font-size: 20px;
       letter-spacing: 2px;
 }
+
+
 nav {
       position: fixed;
       width: 100%;
@@ -76,12 +80,14 @@ nav ul li a {
 }
 
 @media(max-width: 786px) {
+    
 
       .logo {
             position: fixed;
             top: 0;
             margin-top: 16px;
       }
+      
 
       nav ul {
             max-height: 0px;
@@ -108,6 +114,8 @@ nav ul li a {
       }
 
 }
+
+
 
 /*............................content............................*/
 
@@ -183,10 +191,11 @@ h2 {
 
 .lead {
     font-family: cursive;
-    text-align: center;
+    text-align: right;
     /*font-size: 2.5rem;*/
     font-weight: 500;
-    color: green;
+    color: gold;
+    margin-right: 22px;
 }
 
 .col {
@@ -200,10 +209,19 @@ h2 {
 
 table.center {
     margin-left:auto; 
-    margin-right:auto;
-    color:pink;
+   /* margin-right:auto; */
+    color:azure;
     
 }
+
+th {
+    padding: 5px;
+}
+
+table, th, td {
+  border: 1px solid #062425;
+}
+
 .btn-md {
      width: 15.7em;
      padding: 10px 0px;
