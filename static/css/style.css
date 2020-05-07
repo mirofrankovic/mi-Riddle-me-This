@@ -39,6 +39,9 @@ nav {
       width: 100%;
       line-height: 60px;
 }
+
+
+
 nav ul {
       line-height: 60px;
       list-style: none;
@@ -63,9 +66,21 @@ nav ul li {
 
 nav ul li a {
       text-decoration: none;
-      color: #fff;
+      color: gold;
       font-size: 16px;
 }
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+a:hover {
+  color: gold;
+}
+
+a:hover {
+  text-decoration: none !important;
+ }
 
 .menu-icon {
       line-height: 60px;
@@ -164,12 +179,6 @@ nav ul li a {
 */
 
 
-input {
-  display: block;      /* 1. oh noes, my inputs are styled as block... */
-} 
-
-
-
 h1,
 h2,
 h3,
@@ -234,11 +243,37 @@ table, th, td {
     width: 15.7em;
     padding: 10px 0px;
 }
+/*
 
 .btn-danger {
     background-color: #062425;
     border-color: black;
 }
+
+*/
+
+.btn {
+     background-color: #062425;
+     border-color: black;
+     color: red;
+}
+
+.btn:hover {
+    text-decoration: none;
+    color:red;
+    background-color:  #062425;
+}
+
+button:focus {
+    outline: 0 !important;
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 
 /*..............footer......................*/
 

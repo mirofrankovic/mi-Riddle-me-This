@@ -136,13 +136,11 @@ def game(player_name):
   
   
     
-#@app.route('/game_over', methods=["GET", "POST"])                                # what is our parameter refering
-#def gamer(game_over):
-    
-#player_names_and_scores = get_scores()
-#  return render_template("game_over.html")
-#   game_over", player_names_and_scores=player_names_and_scores 
-#  )
+@app.route('/game_over', methods=["GET", "POST"])                                # what is our parameter refering
+def gamer():
+    player_names_and_scores = get_score_table
+    return render_template("game_over.html")
+         
         
 if __name__ == '__main__':
     app.run(host=os.getenv('IP'), port=int(os.getenv('PORT')), debug=True)
