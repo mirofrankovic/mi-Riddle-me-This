@@ -2,14 +2,44 @@
 
 {% block core %}
 
-    <div class="main">
-        <div class="overlay">
+ 
+           
             <div class="container">
-                <hi class="title">Game finished</hi>
-                <h2 class="sub">Thank you for playing the Riddle game</h2>
-                <br>
-                <a href="/ "><h2 class="sub">I wish to play again!</h2></a>
+                <div class="final_table">
+                      {% if score %}   
+                          <h1>Hallo {{ player_name }}! Would you like to improve your {{ score }}?</h1>
+                      {% endif %}
+                    
+                      {% if player_names_and_scores | length > 0 %}
+                    
+                    <p class="lead">Leaderboard</p>
+                    
+                    
+                    
+                    <table class="center leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>rank</th>
+                                <th>player_name</th>
+                                <th>score</th>
+                            </tr>
+                        <thead>
+                        <thbody> 
+                            {% for player_name_and_score in player_names_and_scores %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ player_name_and_score[0] }}</td>
+                                <td>{{ player_name_and_score[1] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                    
             </div>
-        </div>
+                <a href="/"><h2 class="sub">Would you like to play again?</h2></a>
+ </div>
+        
+
         
 {% endblock %} 

@@ -38,6 +38,7 @@ def load_scores():
 
     return zip(player_names, scores)
 
+# Function to get top players on the table
 
 def get_score_table(player_name, score):
     top_ten = load_scores()
@@ -51,6 +52,7 @@ def index():                                          # index is called
         player_name = request.form['player_name']     #player_name is a variable
         return redirect(player_name)
     return render_template("index.html")
+    
     
 @app.route('/<player_name>', methods=["GET", "POST"])
 def game(player_name):
@@ -136,10 +138,16 @@ def game(player_name):
   
   
     
-@app.route('/game_over', methods=["GET", "POST"])                                # what is our parameter refering
-def gamer():
-    player_names_and_scores = get_score_table
-    return render_template("game_over.html")
+@app.route('/top_ten')                                # what is our parameter refering
+def top_ten():
+   player_names_and_scores= load_scores()
+
+   return render_template("table.html", player_names_and_scores=player_names_and_scores) 
+    
+    
+    
+    
+    
          
         
 if __name__ == '__main__':
