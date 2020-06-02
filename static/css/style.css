@@ -3,6 +3,7 @@ html, body {
       padding: 0;
       width: 100%;
       height: 100%;
+      overflow-x: hidden;
       
 }
 
@@ -16,7 +17,7 @@ body {
 
 header {
       width: 100%;
-      height: 100vh; 
+      min-height: 100vh; 
       background: url("/static/images/gollum.jpg") no-repeat 50% 50%;
       background-size: cover;
 }
@@ -26,10 +27,10 @@ header {
       line-height: 60px;
       position: fixed;
       float: left;
-      margin: 16px 46px;
+      
       color: gold;
       font-weight: bold;
-      font-size: 20px;
+     
       letter-spacing: 2px;
 }
 
@@ -50,7 +51,7 @@ nav ul {
       color: #fff;
       padding: 0;
       text-align: right;
-      margin: 0;
+     
       padding-right: 40px;
       transition: 1s;
 }
@@ -147,8 +148,8 @@ a:hover {
 
 .row {
     margin-top:0px;
-    margin-left: 0;
-    margin-right: 0;
+
+    
 }
 
 .image {
@@ -184,14 +185,14 @@ h2,
 h3,
 h4 {
     font-family: 'Indie+Flower|Teko', cursive;
-    font-weight: 500;
+
 }
 
 h1 {
-    font-size: 5rem;
+    
     color: blue;
     text-align: right;
-    margin-top: 0px;
+
 }
 h2 {
     color: green;
@@ -287,20 +288,20 @@ footer {
 	/*position: absolute; */
 	/*position: relative; */
 	/*position: static; */
-	position: absolute;
+	position: fixed;
 	left: 0;
 	right:0;
-	bottom: 0;
+	bottom: 15px;
 	width: 100%;
-	background-color: rgba(255, 50, 0, 0.45);
+	/*background-color: rgba(255, 50, 0, 0.45); */
 	color: #fff;
-	box-shadow: 0px 0px 6px rgba(255, 50, 0, 0.45);
+   /*	box-shadow: 0px 0px 6px rgba(255, 50, 0, 0.45); */
 	
 }
 
 @media only screen and (max-width: 767px){
 footer {
-background-color: rgba(255, 50, 0, 0.45);
+/*background-color: rgba(255, 50, 0, 0.45); */
 color: #FFF;
 font-size:.8em;
 margin-top:0px;
