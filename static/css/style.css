@@ -8,11 +8,41 @@ html, body {
 }
 
 
+
+
 body {
     font-family: 'Indie+Flower|Teko';
    /*background-image: linear-gradient(260deg, #f3f1f3  0%,  #2376ae 100%); */
     margin-bottom: 0px;
     font-weight: lighter;
+}
+
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 0;
+    padding-left: 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  #core {
+    padding-top: 0;
+    padding-left: 0;
+  }
+  
+h1 {
+    
+    color: #36fff9;
+    
+}
+
+.lead {
+    color:gold;
+}
+
+
 }
 
 header {
@@ -72,7 +102,7 @@ header {
   display: block;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 480px) {
     .navbar {
         display: flex;
         justify-content: space-between;
@@ -256,12 +286,14 @@ a:hover {
     flex-direction: row;
     
 }
+
+/*
 .form-control {
     height: 41px;
     width: 20em;
 }
 
-/*
+
 
 .flex {
     display: flex;
@@ -358,11 +390,46 @@ button:focus {
     outline: 0 !important;
 }
 
+/*
 .form-control:focus {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+*/
+
+.form-riddle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+  padding: 1em;
+  background-color: #F00;
+}
+
+.form-control {
+  width: 100%;
+  border: 0;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+form.form-riddle * {
+  box-sizing: border-box;
+}
+
+.btn-sub {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
 
 /*.......................................leaderboard.............................*/
 
@@ -388,22 +455,24 @@ footer {
 	
 }
 
+
+/*
 @media only screen and (max-width: 44em){
 footer {
-/*background-color: rgba(255, 50, 0, 0.45); */
+/*background-color: rgba(255, 50, 0, 0.45); 
 color: #FFF;
 font-size:.8em;
 margin-top:0px;
 padding-top: 15px;
 padding-bottom: 10px;
 position:static;
-/*position:sticky; */
+/*position:sticky; 
 left:0;
 bottom:0;
 width:100%;
 }
 }
-
+*/
 
 
 
@@ -453,6 +522,11 @@ footer .col {
 .social-icons a:hover {
   background-color: orange;
 }
+
+
+}
+
+
 
 
 
