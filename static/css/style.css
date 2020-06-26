@@ -12,6 +12,9 @@ body {
    /*background-image: linear-gradient(260deg, #f3f1f3  0%,  #2376ae 100%); */
     margin-bottom: 0px;
     font-weight: lighter;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -97,9 +100,11 @@ header {
 
 
 .navbar {
+    
     font-size: 18px;
     background-image: linear-gradient(260deg, #060c0f 0%, #060c0f   100%);
-  /*  padding-bottom: 10px; */
+    margin-bottom: 0;
+  
 }
 
 .navbar ul {
@@ -437,10 +442,13 @@ form.form-riddle * {
 
 
 footer {
-     position: fixed;
+     position: static;
      bottom: 0;
      display: flex;
      justify-content: center;
+     flex: 0 0 50px;/*or just height:50px;*/
+     margin-top: auto;
+
     
 }
 
@@ -451,7 +459,7 @@ footer {
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 50px 50px 60px 50px;
-	margin-top: 80px;
+	margin-top: 0px; /* 80px*/
     
 }
 
