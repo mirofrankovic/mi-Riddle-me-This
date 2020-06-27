@@ -99,6 +99,11 @@ header {
 }
 
 
+#core {
+    margin-top: 160px;
+    
+}
+
 .navbar {
     
     font-size: 18px;
@@ -109,7 +114,7 @@ header {
 
 .navbar ul {
      padding: 0px;
-     margin: 0px;
+    /* margin: 0px; */
      text-align: center;
      float:center;
      
@@ -146,6 +151,13 @@ header {
 
 .main-nav li a {
     color: #C0C0C0;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 150px;
+    height: 150px;
+    padding-top: 0;
 }
 
 .logo {
@@ -195,7 +207,7 @@ ul{
     
     
     .navbar {
-        display: flex;
+       /* display: flex; */
         justify-content: space-between;
         padding-bottom: 0;
         /*height: 70px; */
@@ -458,7 +470,7 @@ footer {
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
-	padding: 50px 50px 60px 50px;
+	/*padding: 50px 50px 60px 50px; */
 	margin-top: 0px; /* 80px*/
     
 }
