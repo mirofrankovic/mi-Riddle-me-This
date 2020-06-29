@@ -80,7 +80,7 @@ h1 {
 }
 
 .responsive-footer {
-    position: fixed;
+    position: relative;
 	left: 0;
 	bottom: 0;
 	width: 100%
@@ -98,31 +98,98 @@ header {
       background-size: cover;
 }
 
-
+/*
 #core {
     margin-top: 160px;
     
 }
+
+*/
+
+.container {
+	width: 960px;
+	max-width: 100%;
+	padding: 20px;
+	margin: 0 auto;
+}
+
+/**
+ * By using display: flex
+ * Logo and nav are in 2 cols
+ * align-items make them
+ * vertically centered
+ * justify-content distribute
+ * horizontal spaces around
+ * and flex-wrap break the
+ * things in two lines in
+ * small screens
+ */
+.main-header .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+/**
+ * The followings are to
+ * make things more
+ * clean and airy
+ * and contents centered
+ */
+.main-nav ul {
+	margin: 1em 0 .5em;
+	text-align: center;
+}
+.main-nav li {
+	display: inline;
+}
+.main-nav a {
+	display: inline-block;
+	padding: .5em 1.5em;
+}
+
+/**
+ * Space-around become
+ * Space-between to
+ * distribute space
+ * between the flex-items
+ */
+@media (min-width: 960px) {
+	.main-header .container {
+		justify-content: space-between;
+	}
+}
+
+
+
+
+
+
+
+
+/*
 
 .navbar {
     
     font-size: 18px;
     background-image: linear-gradient(260deg, #060c0f 0%, #060c0f   100%);
     margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
   
 }
 
 .navbar ul {
      padding: 0px;
-    /* margin: 0px; */
+     margin: 0px;
      text-align: center;
-     float:center;
      
     
 }
 .navbar a {
    
-  padding: 14px 16px;
+  
   text-decoration: none;
   
 }
@@ -133,11 +200,16 @@ header {
     display: flex;
     justify-content: center;
     
+     background-color: yellow; 
+     list-style-type: none;
+     margin: 0;
+     padding: 0;
+    
 }
 
 
 
-.nav-links,
+.nav-link,
 .logo {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
@@ -146,6 +218,10 @@ header {
 .main-nav li {
     text-align: center;
     margin: 15px auto;
+    
+    display: inline;
+    font-size: 20px;
+    padding: 15px;
 
 }
 
@@ -155,22 +231,19 @@ header {
 
 .navbar-brand,
 .navbar-nav li a {
-    line-height: 150px;
-    height: 150px;
+  
     padding-top: 0;
 }
 
 .logo {
-    display: inline-block;
-    font-size: 22px;
-    margin-top: 10px;
-    margin-left: 20px;
+    display: inline;
+   
 
 }
 
 
 .navbar-toggle {
-    position: absolute;
+  
     top: 10px;
     right: 20px;
     cursor: pointer; 
@@ -201,16 +274,16 @@ ul{
  
 
 
-
+/*
 
 @media screen and (min-width: 480px) {
     
     
     .navbar {
-       /* display: flex; */
+       
         justify-content: space-between;
         padding-bottom: 0;
-        /*height: 70px; */
+    
         align-items: center;
     }
     .main-nav {
@@ -222,7 +295,7 @@ ul{
     .main-nav li {
         margin: 0;
     }
-    .nav-links {
+    .nav-link {
         margin-left: 40px;
     }
     .logo {
@@ -232,14 +305,14 @@ ul{
        display: none;
     }
     .logo:hover,
-    .nav-links:hover {
+    .nav-link:hover {
         color: rgba(255, 255, 255, 1);
     }
     
 }
 
 
-
+*/
 
 
 
@@ -454,7 +527,7 @@ form.form-riddle * {
 
 
 footer {
-     position: static;
+     position: relative;
      bottom: 0;
      display: flex;
      justify-content: center;
