@@ -15,6 +15,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 
@@ -39,6 +40,8 @@ h1 {
 .lead {
     color:gold;
 }
+
+
 
 .form-control {
   width: 100%;
@@ -111,6 +114,10 @@ header {
 	max-width: 100%;
 	padding: 20px;
 	margin: 0 auto;
+	
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /**
@@ -387,8 +394,6 @@ h2 {
 .lead {
     font-family: cursive;
     text-align: right;
-    /*font-size: 2.5rem;*/
-    font-weight: 500;
     color: gold;
     margin-right: 22px;
 }
@@ -487,6 +492,10 @@ form.form-riddle * {
 
 .btn-sub {
   width: 100%;
+}
+
+.resume-section {
+    padding-top: 50px;
 }
 
 
