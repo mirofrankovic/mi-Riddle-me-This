@@ -2,43 +2,30 @@
 
 {% block core %}
 
-<div class="container">
+<div class="container-wrapper">
   <section class="resume-section d-flex">
-      <div class="my-auto">
-        <h1 class="mb-0 text-center">Welcome to my game!!!!</h1>
-        
-       <div class="lead">Can you beat my riddler????</div>
-        
-       <!-- <img class="danger" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image"  style="width:100%; height:100%"> -->
-        <h1 class="mb-0 text-center">Try your best and seek for your answer!</h1>    
+      <div class="resume-div">
+        <h1 class="text-center">Welcome to my game!!!!</h1>
+        <h2 class="text-center">Can you beat my riddler????</h2>
+        <!-- <img class="danger" src="{{ url_for('static', filename='images/gollum.jpg') }}" alt="Generic placeholder image"  style="width:100%; height:100%"> -->
+        <h1 class="text-center">Try your best and seek for your answer!</h1>    
        <!--</div>-->
     
-</div>
-
-      
-        
-        
-        <div class="container">
-        <form class="form-riddle" method="POST">
-            
-    
-            <input id="player_name" type="text" name="player_name" class="form-control"  placeholder="Player Name"/>
-
-            <button class="btn btn-lg btn-sub" type="submit">Submit</button>
-            
-            
-        </form>
-        </div>
-    
-     <!--</div>  
-     </div> form-inline-->
-    
-    <div class="container">
-        <div class="row">
-    <p class="mb-1 lead">You will have for each question 6 available answers to choose but only one is correct.
+       </div>
+          <div class="container resume-div">
+            <div class="row justify-content-center">
+                <div class="col-4">
+                   <form class="form-riddle" method="POST">
+                     <input id="player_name" type="text" name="player_name" class="form-control"  placeholder="Player Name"/>
+                     <button class="btn btn-lg btn-sub" type="submit">Submit</button>
+                  </form>
+                </div>
+              <!--<div class="col-4">
+                   <p class="mb-1 lead">You will have for each question 6 available answers to choose but only one is correct.
                                                 I am going to give you a clue that the first option=0 and the second=1</p>
-    </div>                                            
-    </div>                                            
+              </div>-->
+           </div>
+       </div>                                            
     
     
 
