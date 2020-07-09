@@ -82,7 +82,7 @@ def game(player_name):
         question_counter = 0
         attempts_counter = 0
         score = 0
-        answer = ''
+        answer = '' 
         
     """Question state"""
     total = len(questionary) #is this a new function len() and stores the retur value for variable total
