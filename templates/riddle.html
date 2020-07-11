@@ -20,24 +20,21 @@
         </ul>
 
         <p><span>Correct Answer: {{correct_answer}}</span></p>
-    </div>  
-      <div class="container">
-      <div class="row">
-          <div class="col-12 col-md-6">
-             <h2>Riddle {{question_counter + 1}} of {{total}}</h2>  
-          </div>
-          
-            <div class="col-12 col-md-6"> 
-              <form method="POST" action="{{ player_name }}" class="form-inline">
-                <input type="text" class="form-control" placeholder="Enter your answer" name="answer" autofocus>
-                <input type="hidden" name="question_counter" value={{question_counter}}>
-                <input type="hidden" name="attempts_counter" value={{attempts_counter}}>
-                <input type="hidden" name="question" value={{question}}>
-                <input type="hidden" name="score" value={{score}}>
-                <input type="hidden" name="correct_answer" value={{correct_answer}}>
-                <input type="hidden" name="attempts" value={{attempts}}>
-                <button type="submit" class="btn btn-md">Enter your next Question</button>
+              <!--<div class="form_class"> -->
+              <form method="POST" action="{{ player_name }}" class="form-inline form-riddle-name">
+                 <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Enter your answer" name="answer" autofocus>
+                    <input type="hidden" name="question_counter" value={{question_counter}}>
+                    <input type="hidden" name="attempts_counter" value={{attempts_counter}}>
+                    <input type="hidden" name="question" value={{question}}>
+                    <input type="hidden" name="score" value={{score}}>
+                    <input type="hidden" name="correct_answer" value={{correct_answer}}>
+                    <input type="hidden" name="attempts" value={{attempts}}>
+                </div>
+                <button type="submit" class="btn btn-md riddle-submit">Enter your next Question</button>
               </form>
+              </div>
+            </div>
             </div>
         </div>              
       </div> 
