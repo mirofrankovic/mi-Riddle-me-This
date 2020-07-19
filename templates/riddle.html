@@ -6,13 +6,19 @@
  <div class="container">
    <!-- <div class="d-column d-flex"> -->
    <div class="main">
-        <h1 class="mb-0">Hallo {{ player_name }}!</h1>
-        <p class="mb-1 lead">You will have for each question 6 available answers to choose but only one is correct.
+       <div class="container">
+           
+        <h1 class="mb-0 text-center">Hallo {{ player_name }}!</h1>
+        <p class="mb-1 lead text-center">You will have for each question 6 available answers to choose but only one is correct.
                                                 I am going to give you a clue that the first option=0 and the second=1</p>
-        <h2>Riddle {{question_counter + 1}} of {{total}}</h2>
-        <h1>{{question}}</h1>
-        <h2>Attempts: {{attempts_counter}} of {{attempts}}</h2>
-        <h2>Score: {{score}}</h2>
+         <div class="flexbox">                                       
+             <!--<div class="right-side"> -->                                     
+             <div class="riddle_1">Riddle {{question_counter + 1}} of {{total}}</div>
+             <div class="riddle_2">{{question}}</div>
+             <div class="riddle_3">Attempts: {{attempts_counter}} of {{attempts}}</div>
+             <div class="riddle_4">Score: {{score}}</div>
+        </div>     
+        <div class="">
         <ul id="answers">
         {% for item in answers %}
             <li>{{ item }}</li>
@@ -21,6 +27,7 @@
 
         <p><span>Correct Answer: {{correct_answer}}</span></p>
               <!--<div class="form_class"> -->
+        </div>      
               <form method="POST" action="{{ player_name }}" class="form-inline form-riddle-name">
                  <div class="form-group">
                     <input type="text" class="form-control" placeholder="Enter your answer" name="answer" autofocus>
@@ -34,6 +41,8 @@
                 <button type="submit" class="btn btn-md riddle-submit">Enter your next Question</button>
               </form>
               </div>
+              </div> <!--row-->
+              </div> <!--container-grid-->
             </div>
             </div>
         </div>              

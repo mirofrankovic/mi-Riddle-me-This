@@ -144,6 +144,13 @@ header {
  * clean and airy
  * and contents centered
  */
+ 
+ a:hover {
+     text-decoration: none;
+     color: #337ab7;
+ }
+ 
+ 
 .main-nav ul {
 	margin: 1em 0 .5em;
 	text-align: center;
@@ -218,12 +225,35 @@ h2 {
     text-align: right;
     color: gold;
     margin-right: 22px;
+    columns: 50px 2;
 }
 
 .col {
     text-align: center;
     
 }
+
+
+.flexbox{
+  height: 300px;
+ /* width: 1000px; */
+  display: flex;
+ /* flex-direction: column;*/
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.flexbox div {
+  width: 40%;
+  background: green;
+  /*height: 30%;*/
+}
+.flexbox .riddle_1, .flexbox .riddle_2, .flexbox .riddle_3, .flexbox .riddle_4{
+  height: 45%;
+}
+
+
+
+
 
 #answers {
     color: green;
@@ -422,6 +452,7 @@ footer {
 
 .responsive-footer .social-icons{
 	margin-top: 25px;
+	text-align: center;
 }
 
 
@@ -445,6 +476,9 @@ footer {
 	text-decoration: none;;
 }
 
+.name-center {
+    text-align: center;
+}
 
  
 
