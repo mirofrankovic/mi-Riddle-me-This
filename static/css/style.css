@@ -241,15 +241,115 @@ h2 {
  /* flex-direction: column;*/
   justify-content: space-between;
   flex-wrap: wrap;
+  /*justify-content: center;*/
+  align-items: center;
+  display: flex;
+
 }
+
+
+
 .flexbox div {
-  width: 40%;
+  /*width: 40%; */
   background: green;
   /*height: 30%;*/
 }
 .flexbox .riddle_1, .flexbox .riddle_2, .flexbox .riddle_3, .flexbox .riddle_4{
-  height: 45%;
+ /* height: 45%; */
 }
+
+
+.riddle_1 {
+    color: white;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+}
+
+.flexbox .riddle_1 {
+     margin: 0;
+     text-shadow: 2px 2px 6px #000;
+     text-align: center;
+     margin-left: 15px;
+     align-self: center;
+}
+
+
+.riddle_2 {
+    color: white;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+}
+
+.flexbox .riddle_2 {
+     margin: 0;
+     text-shadow: 2px 2px 6px #000;
+     text-align: center;
+     margin-left: 15px;
+     align-self: center;
+}
+
+
+.riddle_3 {
+    color: white;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+}
+
+.flexbox .riddle_3 {
+     margin: 0;
+     text-shadow: 2px 2px 6px #000;
+     text-align: center;
+     margin-left: 15px;
+     align-self: center;
+}
+
+
+.riddle_4 {
+    color: white;
+    align-items: center;
+    display: flex;
+    font-size: 30px;
+}
+
+.flexbox .riddle_4 {
+     margin: 0;
+     text-shadow: 2px 2px 6px #000;
+     text-align: center;
+     margin-left: 15px;
+     align-self: center;
+}
+
+
+.flex{
+  height: 300px;
+ /* width: 1000px; */
+  display: flex;
+  flex-direction: column;
+  /*justify-content: space-between;*/
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+
+.flex .form-inline {
+     margin: 0;
+     text-align: center;
+     margin-left: 15px;
+     align-self: center;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -530,32 +630,34 @@ footer {
 }
 
 
-/*
-
-@media ( max-width :320px) {
-    .form_class {
-         min-width: 200px;
-         min-height: 120px;
-    }
+@media screen and (min-width: 375px) and (max-width: 667px){
+.flex .form-inline {
+     margin: 0;
+    /* margin-left: 15px;*/
+     align-self: center;
+     text-align: left;
 }
 
-@media ( min-width :321px) {
-    .form_class {
-         min-width: 300px;
-         min-height: 220px;
-    }
+ }
+ 
+@media screen and (min-width: 768px) and (max-width: 992px){
+  .flexbox {
+  height: 300px;
+ /* width: 1000px; */
+  display: flex;
+ /* flex-direction: column;*/
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
 }
 
-@media ( min-width :640px) {
-    .form_class {
-         min-width: 480px;
-         min-height: 320px;
-    }
-}
+    
+  }
+}   
+ 
 
-@media ( min-width :1200px) {
-    .form_class {
-         min-width: 700px;
-         min-height: 400px;
-    }
-}
+
+
