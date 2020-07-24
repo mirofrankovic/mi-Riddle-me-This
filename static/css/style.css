@@ -225,7 +225,7 @@ h2 {
     text-align: right;
     color: gold;
     margin-right: 22px;
-    columns: 50px 2;
+   /* columns: 50px 2; */
 }
 
 .col {
@@ -468,12 +468,13 @@ input[type=text] {
 
 .form-riddle-name .riddle-submit.btn {
     color: white;
-    border-radius: 0px;
+    border-radius: 4px;
     height: 35px;
     margin-top: -7px;
     padding: 6px 18px;
    /* float: left;*/
     width: 196px;
+    border:1px solid #cdcdcd;
 }
 
 /*
